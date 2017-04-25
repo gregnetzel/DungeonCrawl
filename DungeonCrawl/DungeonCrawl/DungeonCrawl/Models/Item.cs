@@ -1,19 +1,14 @@
 ﻿namespace DungeonCrawl.Models
 {
-    public class Item : BaseDataObject
+    public class Item 
 	{
-		string text = string.Empty;
-		public string Text
-		{
-			get { return text; }
-			set { SetProperty(ref text, value); }
-		}
-
-		string description = string.Empty;
-		public string Description
-		{
-			get { return description; }
-			set { SetProperty(ref description, value); }
-		}
-	}
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Description { get; set; }
+        public int StrValue { get; set; }
+        public int DexValue { get; set; }
+        public int SpdValue { get; set; }
+        public int HPValue { get; set; }
+        public string Image { get; set; }
+    }
 }

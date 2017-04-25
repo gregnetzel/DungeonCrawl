@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DungeonCrawl.Views.GamePage"
+             Title="Game Page">
+    <StackLayout VerticalOptions="FillAndExpand" 
+		HorizontalOptions="FillAndExpand" 
+		Orientation="Vertical" 
+		Spacing="5">
+
+        <Label Text="My Game" FontSize="50" TextColor="Aqua" HorizontalTextAlignment="Center"/>
+
+        <Image Source="shark.png" />
+
+        <Button x:Name="ScoreButton" Text="Score" IsEnabled="true" Clicked="OnScore"/>
+        <Button x:Name="CharacterButton" Text="Characters" IsEnabled="true" Clicked="OnCharacter"/>
+        <Button x:Name="InventoryButton" Text="Inventory" IsEnabled="true" Clicked="OnInventory"/>
+        <Button x:Name="MonstersButton" Text="Monsters" IsEnabled="true" Clicked="OnMonsters"/>
+        <Button x:Name="ItemsButton" Text="Items" IsEnabled="true" Clicked="OnItems"/>
+        <Button x:Name="BattleButton" Text="Battle" IsEnabled="true" Clicked="OnBattle"/>
+
+
+    </StackLayout>
+</ContentPage>

@@ -301,3 +301,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/DungeonCrawl/DungeonCrawl/DungeonCrawl.Android/packages.config.new.20170411211030
