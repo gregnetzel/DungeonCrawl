@@ -60,10 +60,6 @@
       <Project>{9307d774-0530-458c-9f53-08d450e3dff0}</Project>
       <Name>DungeonCrawl.Android</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DungeonCrawl\DungeonCrawl.iOS\DungeonCrawl.iOS.csproj">
-      <Project>{c5ea71ce-4a9a-4400-a432-34dc9d5946aa}</Project>
-      <Name>DungeonCrawl.iOS</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

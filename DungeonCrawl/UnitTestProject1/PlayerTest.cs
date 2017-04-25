@@ -13,9 +13,7 @@ namespace UnitTestProject1
     {
         public PlayerTest()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            
         }
 
         [TestMethod]
