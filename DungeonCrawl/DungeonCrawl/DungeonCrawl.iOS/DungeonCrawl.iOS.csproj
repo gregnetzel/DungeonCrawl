@@ -144,7 +144,9 @@
       <InProject>false</InProject>
     </ImageAsset>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\shark.png" />
+  </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -159,17 +161,46 @@
     <Compile Include="AppDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\profile_generic.png" />
-    <BundleResource Include="Resources\profile_generic%402x.png" />
-    <BundleResource Include="Resources\profile_generic%403x.png" />
-    <BundleResource Include="Resources\slideout.png" />
-    <BundleResource Include="Resources\slideout%402x.png" />
-    <BundleResource Include="Resources\tab_about.png" />
-    <BundleResource Include="Resources\tab_about%402x.png" />
-    <BundleResource Include="Resources\tab_about%403x.png" />
-    <BundleResource Include="Resources\tab_feed.png" />
-    <BundleResource Include="Resources\tab_feed%402x.png" />
-    <BundleResource Include="Resources\tab_feed%403x.png" />
+    <BundleResource Include="Resources\sword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\axe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dagger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sinongun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\yuuki.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\yuukisword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\asuna.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\asunasword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\kirito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\kiritosword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\leafa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sinon.png" />
   </ItemGroup>
   <Import Project="..\DungeonCrawl\DungeonCrawl.projitems" Label="Shared" Condition="Exists('..\DungeonCrawl\DungeonCrawl.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

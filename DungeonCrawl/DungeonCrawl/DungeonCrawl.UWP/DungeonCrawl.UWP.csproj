@@ -97,6 +97,21 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="asuna.png" />
+    <Content Include="asunasword.png" />
+    <Content Include="axe.png" />
+    <Content Include="dagger.png" />
+    <Content Include="icon.png" />
+    <Content Include="kirito.png" />
+    <Content Include="kiritosword.png" />
+    <Content Include="lance.png" />
+    <Content Include="leafa.png" />
+    <Content Include="shark.png" />
+    <Content Include="sinon.png" />
+    <Content Include="sinongun.png" />
+    <Content Include="sword.png" />
+    <Content Include="yuuki.png" />
+    <Content Include="yuukisword.png" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>

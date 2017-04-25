@@ -7,10 +7,10 @@
 		HorizontalOptions="FillAndExpand" 
 		Orientation="Vertical" 
 		Spacing="15">
-
         <Label Text="Not quite DND"/>
+        <Label Text="By Team Cheaters"/>
         <Label Text="CPSC - 4910 - SQ"/>
-        <Label Text="Team Cheaters" />
-
+        <Label Text=""/>
+        <Label Text="How To Play:..."/>
     </StackLayout>
 </ContentPage>
