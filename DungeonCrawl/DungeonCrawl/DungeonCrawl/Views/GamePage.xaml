@@ -8,7 +8,7 @@
 		Orientation="Vertical" 
 		Spacing="5">
 
-        <Label Text="My Game" FontSize="50" TextColor="Aqua" HorizontalTextAlignment="Center"/>
+        <Label Text="Not Quite DND" FontSize="50" HorizontalTextAlignment="Center"/>
 
         <Image Source="shark.png" />
 
