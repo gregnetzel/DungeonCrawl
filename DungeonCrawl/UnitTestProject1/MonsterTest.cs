@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DungeonCrawl.Models;
+
 namespace UnitTestProject1
 {
     [TestClass]

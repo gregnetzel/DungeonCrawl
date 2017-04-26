@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DungeonCrawl.Models;
 
 namespace UnitTestProject1
 {
@@ -13,7 +14,7 @@ namespace UnitTestProject1
     {
         public PlayerTest()
         {
-            
+            Player testPlayer = new Player();
         }
 
         [TestMethod]
