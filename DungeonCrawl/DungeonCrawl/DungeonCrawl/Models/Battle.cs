@@ -26,7 +26,8 @@ namespace DungeonCrawl.Models
         }
         public void Fight(Character attacker, Character defender)
         {
-
+            if (attacker.Str > defender.Dex)//temp logic to be moved to controller
+                defender.HP--;
         }
         public bool IsOver()
         {
