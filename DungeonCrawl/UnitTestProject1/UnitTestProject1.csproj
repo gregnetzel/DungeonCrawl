@@ -51,6 +51,7 @@
     <Compile Include="MonsterTest.cs" />
     <Compile Include="PlayerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BattleTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
