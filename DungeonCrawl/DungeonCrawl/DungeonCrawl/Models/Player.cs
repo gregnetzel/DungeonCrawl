@@ -9,16 +9,22 @@ namespace DungeonCrawl.Models
     {
         public int CurrentXP { get; set; }
         public ObservableCollection<Item> CurrentItems { get; set; } // What's inventory for then?
-
+        public Player()
+        {
+            CurrentItems = new ObservableCollection<Item>();
+        }
         public void AddXP(int XP)
         {
             CurrentXP += XP;
+            if (CurrentXP >= 100)
+                LevelUp();
+                
         }
 
         public void LevelUp()
         {
-            if (CurrentXP >= 100) Level++;
             CurrentXP = 0;
+            Level++;
 
             if (Level % 2 == 0)
             {
