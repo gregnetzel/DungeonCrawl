@@ -8,11 +8,15 @@ namespace DungeonCrawl.Models
     public class Player:Character
     {
         public int CurrentXP { get; set; }
-        public ObservableCollection<Item> CurrentItems { get; set; } // What's inventory for then?
         public Player()
         {
             CurrentItems = new ObservableCollection<Item>();
+            for (int i = 0; i < 4; i++)
+            {
+                CurrentItems.Add(new Item());
+            }
         }
+
         public void AddXP(int XP)
         {
             CurrentXP += XP;
@@ -47,7 +51,22 @@ namespace DungeonCrawl.Models
 
         public void GetItem(Item item)
         {
-            CurrentItems.Add(item);
+            if (item.HPValue > this.CurrentItems[0].HPValue)
+            {
+                CurrentItems[0] = item;
+            }
+            else if(item.StrValue > this.CurrentItems[1].StrValue)
+            {
+                CurrentItems[1] = item;
+            }
+            else if (item.DexValue > this.CurrentItems[2].DexValue)
+            {
+                CurrentItems[2] = item;
+            }
+            else if (item.SpdValue > this.CurrentItems[3].SpdValue)
+            {
+                CurrentItems[3] = item;
+            }
         }
     }
 }

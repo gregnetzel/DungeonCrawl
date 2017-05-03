@@ -45,5 +45,20 @@ namespace UnitTestProject1
             var b = new Battle(players);
             Assert.IsTrue(b.IsOver());
         }
+        [TestMethod]
+        public void TestFight()
+        {
+            var p1 = new Player { Spd = 5, HP = 0 };
+            var p2 = new Player { Spd = 4, HP = 0 };
+            var p3 = new Player { Spd = 7, HP = 0 };
+            var p4 = new Player { Spd = 1, HP = 0 };
+            Player[] players = { p1, p2, p3, p4 };
+            var b = new Battle(players);
+
+            var initHealth = b.monsters[0].HP;
+            b.Fight(b.players[0], b.monsters[0]);
+
+            Assert.IsTrue(b.monsters[0].HP < initHealth);
+        }
     }
 }

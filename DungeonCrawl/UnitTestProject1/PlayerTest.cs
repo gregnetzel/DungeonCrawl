@@ -60,10 +60,34 @@ namespace UnitTestProject1
         {
             var myPlayer = new Player();
             Item tempItem = new Item { Name = "Test" };
+            myPlayer.HP = 1;
+            tempItem.HPValue = 2;
+            myPlayer.GetItem(tempItem);
+
+            Assert.IsTrue(myPlayer.HP == 3, "GetItems has errors");
+        }
+        [TestMethod]
+        public void TestAddItemsAdded()
+        {
+            var myPlayer = new Player { Str = 2 };
+            Item tempItem = new Item { Name = "Test", StrValue = 2};
 
             myPlayer.GetItem(tempItem);
 
-            Assert.IsTrue(myPlayer.CurrentItems.Count > 0, "GetItems has errors");
+            Assert.IsTrue(myPlayer.Str == 4, "GetItems has errors");
+        }
+
+        [TestMethod]
+        public void TestAddItemsRejected()
+        {
+            var myPlayer = new Player { Str = 2 };
+            Item tempItem = new Item { Name = "Test", StrValue = 3 };
+            Item tempItem2 = new Item { Name = "Test1", StrValue = 2 };
+
+            myPlayer.GetItem(tempItem);
+            myPlayer.GetItem(tempItem2);
+
+            Assert.IsTrue(myPlayer.CurrentItems[1].Name == "Test", "GetItems has errors");
         }
     }
 }

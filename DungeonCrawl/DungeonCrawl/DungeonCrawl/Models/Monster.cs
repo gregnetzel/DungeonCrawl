@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace DungeonCrawl.Models
@@ -8,6 +9,14 @@ namespace DungeonCrawl.Models
     {
         public string Type { get; set; }
 
+        public Monster()
+        {
+            CurrentItems = new ObservableCollection<Item>();
+            for (int i = 0; i < 4; i++)
+            {
+                CurrentItems.Add(new Item());
+            }
+        }
         // Creates a new Item and return it everytime it's killed
         public Item DropItem()
         {
