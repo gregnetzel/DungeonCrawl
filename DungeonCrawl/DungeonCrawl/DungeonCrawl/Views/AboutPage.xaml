@@ -3,14 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DungeonCrawl.Views.AboutPage"
              Title="About Page">
-    <StackLayout VerticalOptions="FillAndExpand" 
-		HorizontalOptions="FillAndExpand" 
-		Orientation="Vertical" 
-		Spacing="15">
-        <Label Text="Not quite DND"/>
-        <Label Text="By Team Cheaters"/>
-        <Label Text="CPSC - 4910 - SQ"/>
-        <Label Text=""/>
-        <Label Text="How To Play:..."/>
-    </StackLayout>
+    <ScrollView Orientation="Vertical">
+        <StackLayout VerticalOptions="FillAndExpand" 
+                 HorizontalOptions="FillAndExpand" 
+                 Orientation="Vertical" 
+                 Spacing="15">
+            <Label Text="Definitely Not DND"/>
+            <Label Text="By Team Cheaters"/>
+            <Label Text="Alvin Jie"/>
+            <Label Text="Greg Netzel"/>
+            <Label Text="Gabe Ramos"/>
+            <Label Text="Bryson Shea"/>
+        </StackLayout>
+    </ScrollView>
+    
 </ContentPage>

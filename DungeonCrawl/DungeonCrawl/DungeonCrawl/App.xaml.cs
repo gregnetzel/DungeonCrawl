@@ -21,13 +21,21 @@ namespace DungeonCrawl
             {
                 Children =
                 {
-                    new NavigationPage(new AboutPage())
-                    {
-                        Title = "About",
-                    },
                     new NavigationPage(new GamePage())
                     {
                         Title = "Game",
+                    },
+                    new NavigationPage(new ItemsPage())
+                    {
+                        Title = "Items",
+                    },
+                    new NavigationPage(new MonstersPage())
+                    {
+                        Title = "Monsters",
+                    },
+                    new NavigationPage(new AboutPage())
+                    {
+                        Title = "About",
                     },
                 }
             };

@@ -8,17 +8,12 @@
 		Orientation="Vertical" 
 		Spacing="5">
 
-        <Label Text="Not Quite DND" FontSize="50" HorizontalTextAlignment="Center"/>
+        <Label Text="Definitely Not DND" FontSize="50" HorizontalTextAlignment="Center"/>
 
         <Image Source="shark.png" />
 
-        <Button x:Name="ScoreButton" Text="Score" IsEnabled="true" Clicked="OnScore"/>
-        <Button x:Name="CharacterButton" Text="Characters" IsEnabled="true" Clicked="OnCharacter"/>
-        <Button x:Name="InventoryButton" Text="Inventory" IsEnabled="true" Clicked="OnInventory"/>
-        <Button x:Name="MonstersButton" Text="Monsters" IsEnabled="true" Clicked="OnMonsters"/>
-        <Button x:Name="ItemsButton" Text="Items" IsEnabled="true" Clicked="OnItems"/>
-        <Button x:Name="BattleButton" Text="Battle" IsEnabled="true" Clicked="OnBattle"/>
-
+        <Button x:Name="NewGame" Text="New Game" IsEnabled="true" Clicked="OnNewGame"/>
+        <Button x:Name="AutoPlay" Text="Auto Play" IsEnabled="true" Clicked="OnAutoPlay"/>
 
     </StackLayout>
 </ContentPage>

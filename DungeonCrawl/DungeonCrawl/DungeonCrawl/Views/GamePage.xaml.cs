@@ -16,32 +16,13 @@ namespace DungeonCrawl.Views
 		{
 			InitializeComponent ();
 		}
-        async void OnScore(object sender, EventArgs e)
+
+        async void OnNewGame(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ScorePage());
+            await Navigation.PushAsync(new NewGamePage());
         }
 
-        async void OnCharacter(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CharactersPage());
-        }
-
-        async void OnInventory(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new InventoryPage());
-        }
-
-        async void OnMonsters(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MonstersPage());
-        }
-
-        async void OnItems(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new ItemsPage());
-        }
-
-        async void OnBattle(object sender, EventArgs e)
+        async void OnAutoPlay(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new BattlePage());
         }
