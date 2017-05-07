@@ -4,12 +4,26 @@
              x:Class="DungeonCrawl.Views.EditItemDetails">
     <ContentPage.Content>
         <StackLayout>
-            <Image x:Name="ImageXAML" Aspect="AspectFit" />
-            <Entry x:Name="DetailsXAML" FontSize="18" />
-            <Entry x:Name="HPXAML" FontSize="18" />
-            <Entry x:Name="StrXAML" FontSize="18" />
-            <Entry x:Name="DextXAML" FontSize="18" />
-            <Entry x:Name="SpeedXAML" FontSize="18" />
+            <StackLayout Orientation ="Horizontal">
+                <Label Text="Name: "/>
+                <Entry x:Name="NameXAML" FontSize="18" Text="{Binding Name}"/>
+            </StackLayout>
+            <StackLayout Orientation ="Horizontal">
+                <Label Text="Health: "/>
+                <Entry x:Name="HPXAML" FontSize="18" Text="{Binding HPValue}"/>
+            </StackLayout>
+            <StackLayout Orientation ="Horizontal">
+                <Label Text="Strength: "/>
+                <Entry x:Name="StrXAML" FontSize="18" Text="{Binding StrValue}"/>
+            </StackLayout>
+            <StackLayout Orientation ="Horizontal">
+                <Label Text="Dexterity: "/>
+                <Entry x:Name="DextXAML" FontSize="18" Text="{Binding DexValue}"/>
+            </StackLayout>
+            <StackLayout Orientation ="Horizontal">
+                <Label Text="Speed"/>
+                <Entry x:Name="SpeedXAML" FontSize="18" Text="{Binding SpdValue}"/>
+            </StackLayout>            
             <Button x:Name="SaveItem" Text="Save" IsEnabled="true" Clicked="OnSaveClicked"/>
             <Button x:Name="DeleteItem" Text="Delete" IsEnabled="true" Clicked="OnDeleteClicked"/>
         </StackLayout>

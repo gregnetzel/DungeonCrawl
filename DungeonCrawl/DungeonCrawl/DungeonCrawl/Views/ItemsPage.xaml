@@ -3,13 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DungeonCrawl.Views.ItemsPage">
     <ScrollView>
-        <ListView RowHeight="40" x:Name="ItemsView">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Name}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <StackLayout>
+            <ListView RowHeight="40" x:Name="ItemsView"  ItemSelected ="OnItemClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="AddItem" Text="Add New Item" IsEnabled="true" Clicked="OnAddClicked"/>
+        </StackLayout>       
     </ScrollView>
     
 </ContentPage>

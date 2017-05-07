@@ -13,32 +13,32 @@ namespace DungeonCrawl.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditItemDetails : ContentPage
 	{
+        private ItemDataAccess dataAccess;
+        private Item tItem;
         public EditItemDetails()
         {
             InitializeComponent();
+            dataAccess = new ItemDataAccess();
         }
         public EditItemDetails(Item item)
         {
             InitializeComponent();
-
-            this.Title = item.Name;
-
-            ImageXAML.Source = item.Image;
-
-            DetailsXAML.Text = $" Description: {item.Description} \n\n" +
-                $" Str: {item.StrValue}\n Dex: {item.DexValue}\n Spd: {item.SpdValue}\n HP: {item.HPValue}";
-            HPXAML.Text = ""+item.HPValue;
-            StrXAML.Text = "" + item.StrValue;
-            SpeedXAML.Text = "" + item.SpdValue;
-            DextXAML.Text = "" + item.DexValue;
+            dataAccess = new ItemDataAccess();
+            tItem = item;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            BindingContext = tItem;
         }
         async void OnSaveClicked(object sender, EventArgs e)
         {
-            //save to db
+            dataAccess.SaveItem(tItem);
+            await Navigation.PopAsync();
         }
         async void OnDeleteClicked(object sender, EventArgs e)
         {
-            //remove from db
+            dataAccess.DeleteItem(tItem);
             await Navigation.PopAsync();
         }
     }

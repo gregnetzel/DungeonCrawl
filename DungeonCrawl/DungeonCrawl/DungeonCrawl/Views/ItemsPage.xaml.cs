@@ -15,71 +15,37 @@ namespace DungeonCrawl.Views
 	public partial class ItemsPage : ContentPage
 	{
         public ObservableCollection<Item> ItemsList = new ObservableCollection<Item>();
-
+        private ItemDataAccess dataAccess;
         public ItemsPage()
         {
             InitializeComponent();
+            this.dataAccess = new ItemDataAccess();
 
             Title = "Items";
 
             ItemsView.ItemsSource = ItemsList;
-            populateItems();
-            ItemsView.ItemSelected += async (sender, e) =>
-            {
-                var item = e.SelectedItem as Item;
-                if (e.SelectedItem == null) return;
-                await Navigation.PushAsync(new EditItemDetails(item));
-            };
-
+            PopulateItems();
         }
 
-        void populateItems()
+        void PopulateItems()
         {
-            ItemsList.Add(new Item
+            var templist = dataAccess.GetItems();
+            
+            foreach (Item i in templist)
             {
-                Name = "Elucidator (Kirito)",
-                Type = "Sword",
-                Description = "Kirito's primary weapon. ",
-                StrValue = 9,
-                DexValue = 4,
-                HPValue = 0,
-                SpdValue = 4,
-                Image = "kiritosword.png"
-            });
-            ItemsList.Add(new Item
-            {
-                Name = "Lambent Light (Asuna)",
-                Type = "Sword",
-                Description = "Asuna's primary weapon.",
-                StrValue = 9,
-                DexValue = 4,
-                HPValue = 0,
-                SpdValue = 4,
-                Image = "asunasword.png"
-            });
-            ItemsList.Add(new Item
-            {
-                Name = "PGM Ultima Ratio Hecate II (Sinon)",
-                Type = "Sniper",
-                Description = "Sinon's primary weapon.",
-                StrValue = 15,
-                DexValue = 8,
-                HPValue = 0,
-                SpdValue = 0,
-                Image = "sinongun.png"
-            });
-            ItemsList.Add(new Item
-            {
-                Name = "Absolute Sword (Yuuki)",
-                Type = "Sword",
-                Description = "Yuuki's primary weapon",
-                StrValue = 10,
-                DexValue = 4,
-                HPValue = 0,
-                SpdValue = 4,
-                Image = "yuukisword.png"
-            });
+                ItemsList.Add(i);
+            }
+        }
 
+        async void OnItemClick(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as Item;
+            await Navigation.PushAsync(new EditItemDetails(item));
+        }
+        async void OnAddClicked(object sender, SelectedItemChangedEventArgs e)
+        {
+            Item item = dataAccess.AddNewItem();
+            await Navigation.PushAsync(new EditItemDetails(item));
         }
     }
 }

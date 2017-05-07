@@ -22,11 +22,9 @@ namespace DungeonCrawl.Views
             InitializeComponent();
 
             this.Title = item.Name;
+            
 
-            ImageXAML.Source = item.Image;
-
-            DetailsXAML.Text = $" Description: {item.Description} \n\n" +
-                $" Str: {item.StrValue}\n Dex: {item.DexValue}\n Spd: {item.SpdValue}\n HP: {item.HPValue}";
+            DetailsXAML.Text = $" Str: {item.StrValue}\n Dex: {item.DexValue}\n Spd: {item.SpdValue}\n HP: {item.HPValue}";
 
         }
     }
