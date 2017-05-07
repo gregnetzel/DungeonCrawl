@@ -133,5 +133,16 @@ namespace DungeonCrawl.Models
             var temp = database.Query<Item>("SELECT* FROM table ORDER BY RANDOM() LIMIT 1");
             return temp[0];
         }
+        public void DeleteAllItems()
+        {
+            lock (collisionLock)
+            {
+                database.DropTable<Item>();
+                database.CreateTable<Item>();
+            }
+            this.Items = null;
+            this.Items = new ObservableCollection<Item>
+              (database.Table<Item>());
+        }
     }
 }

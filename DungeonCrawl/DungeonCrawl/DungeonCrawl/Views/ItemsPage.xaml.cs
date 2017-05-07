@@ -51,5 +51,10 @@ namespace DungeonCrawl.Views
             Item item = dataAccess.AddNewItem();
             await Navigation.PushAsync(new EditItemDetails(item));
         }
+        async void OnDeleteAllClicked(object sender, SelectedItemChangedEventArgs e)
+        {
+            dataAccess.DeleteAllItems();
+            BindingContext = dataAccess;
+        }
     }
 }

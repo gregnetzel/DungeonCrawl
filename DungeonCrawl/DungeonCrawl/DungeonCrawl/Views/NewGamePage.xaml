@@ -3,10 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DungeonCrawl.Views.NewGamePage">
     <StackLayout>
-        <Entry x:Name="Player1Name" FontSize="18" Placeholder="Player 1 Name"/>
-        <Entry x:Name="Player2Name" FontSize="18" Placeholder="Player 2 Name"/>
-        <Entry x:Name="Player3Name" FontSize="18" Placeholder="Player 3 Name"/>
-        <Entry x:Name="Player4Name" FontSize="18" Placeholder="Player 4 Name"/>
+        <ListView x:Name ="PlayerListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Player Name"/>
+                            <Entry Text="{Binding Name}" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout> 
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Button x:Name="StartGame" Text="Start Game" IsEnabled="true" Clicked="OnStartClicked"/>
     </StackLayout>
 </ContentPage>
