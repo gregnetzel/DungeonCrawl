@@ -28,7 +28,7 @@ namespace DungeonCrawl.Views
             {
                 var item = e.SelectedItem as Item;
                 if (e.SelectedItem == null) return;
-                await Navigation.PushAsync(new ItemsDetails(item));
+                await Navigation.PushAsync(new EditItemDetails(item));
             };
 
         }
