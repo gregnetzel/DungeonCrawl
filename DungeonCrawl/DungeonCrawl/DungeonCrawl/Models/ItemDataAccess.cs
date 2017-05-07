@@ -128,5 +128,10 @@ namespace DungeonCrawl.Models
             this.Items.Remove(itemInstance);
             return false;
         }
+        public Item GetRandomItem()
+        {
+            var temp = database.Query<Item>("SELECT* FROM table ORDER BY RANDOM() LIMIT 1");
+            return temp[0];
+        }
     }
 }

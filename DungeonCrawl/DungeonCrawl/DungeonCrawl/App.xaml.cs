@@ -29,10 +29,6 @@ namespace DungeonCrawl
                     {
                         Title = "Items",
                     },
-                    new NavigationPage(new MonstersPage())
-                    {
-                        Title = "Monsters",
-                    },
                     new NavigationPage(new AboutPage())
                     {
                         Title = "About",
