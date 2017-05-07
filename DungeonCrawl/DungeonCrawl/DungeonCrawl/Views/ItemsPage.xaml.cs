@@ -30,13 +30,17 @@ namespace DungeonCrawl.Views
         void PopulateItems()
         {
             var templist = dataAccess.GetItems();
-            
+            ItemsList.Clear();
             foreach (Item i in templist)
             {
                 ItemsList.Add(i);
             }
         }
-
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            PopulateItems();
+        }
         async void OnItemClick(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as Item;
