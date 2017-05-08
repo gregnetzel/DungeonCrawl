@@ -2,4 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DungeonCrawl.Views.BattlePage">
+    <StackLayout>
+        <ScrollView HorizontalOptions="CenterAndExpand">
+            <Label Text="The Battle Has Started&#10;&#10;"/>
+        </ScrollView>
+        <StackLayout Orientation="Horizontal">
+            <ListView RowHeight="40" x:Name="PlayerListView"  ItemSelected ="OnPlayerClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>                       
+                        <TextCell Text="{Binding NameAndHealth}" />                                               
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView RowHeight="40" x:Name="MonsterListView"  ItemSelected ="OnMonsterClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding NameAndHealth}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <Button x:Name="FightRound" Text="Fight Round" IsEnabled="true" Clicked="OnFightClick"/>
+    </StackLayout>
 </ContentPage>

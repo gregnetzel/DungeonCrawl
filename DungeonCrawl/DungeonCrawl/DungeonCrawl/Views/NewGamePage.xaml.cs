@@ -7,25 +7,26 @@ using DungeonCrawl.Models;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
 
 namespace DungeonCrawl.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewGamePage : ContentPage
 	{
-        Player[] players;
+        public ObservableCollection<Player> players;
 		public NewGamePage ()
 		{
 			InitializeComponent ();
-            players = new Player[4];
+            players = new ObservableCollection<Player>();
             for (int i = 0; i < 4; i++)
-                players[i] = new Player();
+                players.Add(new Player());
             PlayerListView.ItemsSource = players;
         }
        
         async void OnStartClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BattlePage());
+            await Navigation.PushAsync(new BattlePage(players));
         }
     }
 }

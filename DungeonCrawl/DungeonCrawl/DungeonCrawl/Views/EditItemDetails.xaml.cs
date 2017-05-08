@@ -34,12 +34,12 @@ namespace DungeonCrawl.Views
         async void OnSaveClicked(object sender, EventArgs e)
         {
             dataAccess.SaveItem(tItem);
-            await Navigation.PopAsync();
+            await Navigation.PushAsync(new ItemsPage());
         }
         async void OnDeleteClicked(object sender, EventArgs e)
         {
             dataAccess.DeleteItem(tItem);
-            await Navigation.PopAsync();
+            await Navigation.PushAsync(new ItemsPage());
         }
     }
 }

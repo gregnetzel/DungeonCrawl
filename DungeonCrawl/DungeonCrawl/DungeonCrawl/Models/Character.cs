@@ -19,7 +19,7 @@ namespace DungeonCrawl.Models
         private int _speed;
         public int Spd { get { return _speed + CurrentItems[3].SpdValue; } set { _speed = value; } }
         public int Level { get;set; }
-
+        public string NameAndHealth { get { return Name + " has " + HP + " health remaining."; } }
         public int CompareTo(Object obj)//to make sorting the battle order easy
         {
             Character cha = obj as Character;

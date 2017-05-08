@@ -55,6 +55,7 @@ namespace DungeonCrawl.Views
         {
             dataAccess.DeleteAllItems();
             BindingContext = dataAccess;
+            await Navigation.PushAsync(new ItemsPage());
         }
     }
 }

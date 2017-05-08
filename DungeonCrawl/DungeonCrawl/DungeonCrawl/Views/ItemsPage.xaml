@@ -12,7 +12,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button x:Name="DeleteAll" Text="Delete All" IsEnabled="true" Clicked="OnDeleteAllClicked"/>
         </StackLayout>       
     </ScrollView>
     

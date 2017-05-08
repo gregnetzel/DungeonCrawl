@@ -21,9 +21,7 @@ namespace DungeonCrawl.Views
         {
             InitializeComponent();
 
-            this.Title = player.Name;
-
-            CharImage.Source = player.Icon;
+            Title = player.Name;
 
             CharDetails.Text = $" Level: {player.Level}\n HP: {player.HP}\n Str: {player.Str}\n Dex: {player.Dex}\n Spd: {player.Spd}";
         }

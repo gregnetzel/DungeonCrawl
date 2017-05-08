@@ -11,42 +11,41 @@ namespace DungeonCrawl.Models
         public Player()
         {
             CurrentItems = new ObservableCollection<Item>();
+            Level = 1;
             for (int i = 0; i < 4; i++)
             {
                 CurrentItems.Add(new Item());
             }
+            Random rng = new Random();
+            int stats = 10;
+            HP = stats;
+            int temp = rng.Next(0, stats);
+            Spd = temp;
+            stats -= temp;
+            temp = rng.Next(0, stats);
+            Dex = temp;
+            stats -= temp;
+            Str = stats;
         }
 
         public void AddXP(int XP)
         {
             CurrentXP += XP;
-            if (CurrentXP >= 100)
+            while (CurrentXP >= 100)
+            {
                 LevelUp();
-                
+                CurrentXP -= 100;
+            }
         }
 
         public void LevelUp()
         {
-            CurrentXP = 0;
+            Random rng = new Random();
+            HP += 5*Level;
+            Str += rng.Next(1, 2 * Level);
+            Spd += rng.Next(1, 2 * Level);
+            Dex += rng.Next(1, 2 * Level);
             Level++;
-
-            if (Level % 2 == 0)
-            {
-                Str++;
-                Spd++;
-            }
-            else if (Level % 3 == 0)
-            {
-                Dex++;
-                HP += 3;
-            }
-            else if (Level % 10 == 0)
-            {
-                Str++;
-                Spd++;
-                Dex++;
-                HP += 5;
-            }
         }
 
         public void GetItem(Item item)

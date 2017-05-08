@@ -85,7 +85,8 @@ namespace DungeonCrawl.Models
                 DexValue = 0,
                 SpdValue = 0,
             };
-            this.Items.Add(temp);
+            Items.Add(temp);
+            database.Insert(temp);
             return temp;
         }
         
