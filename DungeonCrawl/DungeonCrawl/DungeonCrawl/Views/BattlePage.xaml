@@ -4,7 +4,7 @@
              x:Class="DungeonCrawl.Views.BattlePage">
     <StackLayout>
         <ScrollView HorizontalOptions="CenterAndExpand">
-            <Label Text="The Battle Has Started&#10;&#10;"/>
+            <Label x:Name="GameOut" FontSize="18" />
         </ScrollView>
         <StackLayout Orientation="Horizontal">
             <ListView RowHeight="40" x:Name="PlayerListView"  ItemSelected ="OnPlayerClick">

@@ -4,7 +4,6 @@
              x:Class="DungeonCrawl.Views.ItemsDetails">
     <ContentPage.Content>
         <StackLayout>
-            <Image x:Name="ImageXAML" Aspect="AspectFit" />
             <Label x:Name="DetailsXAML" FontSize="18" />
         </StackLayout>
     </ContentPage.Content>

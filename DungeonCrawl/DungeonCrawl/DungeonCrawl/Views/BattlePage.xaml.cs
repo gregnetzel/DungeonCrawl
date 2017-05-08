@@ -35,6 +35,7 @@ namespace DungeonCrawl.Views
         {
             InitializeComponent();
             battle = bat;
+            GameOut.Text = battle.FightRound();            
             PlayerListView.ItemsSource = battle.players;
             MonsterListView.ItemsSource = battle.monsters;
         }
@@ -59,8 +60,7 @@ namespace DungeonCrawl.Views
             await Navigation.PushAsync(new MonsterDetails(mons));
         }
         async void OnFightClick(object sender, EventArgs e)
-        {
-            battle.FightRound();
+        {            
             await Navigation.PushAsync(new BattlePage(battle));
         }
     }

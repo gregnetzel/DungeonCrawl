@@ -28,13 +28,16 @@ namespace DungeonCrawl.Models
             attackOrder.Reverse();
         }
         public bool isOver = false;
-        public void Fight(Character attacker, Character defender)
+        public string Fight(Character attacker, Character defender)
         {
-            defender.HP-=attacker.Str;
+            int damage = attacker.Str;
+            defender.HP -= damage;
+            return attacker.Name + " attacked " + defender.Name + " and did " + damage +" damage.\n";
         }
 
-        public void FightRound()
+        public string FightRound()
         {
+            string whatHappened = "";
             int j = 0;
             for (int i = 0; i < attackOrder.Count; i++)
             {
@@ -43,13 +46,25 @@ namespace DungeonCrawl.Models
                     j = i + 1;
                     while (attackOrder[i].GetType() == attackOrder[j % (attackOrder.Count)].GetType())                    
                         j++;
-                    Fight(attackOrder[i], attackOrder[j % (attackOrder.Count)]);
+                    whatHappened += Fight(attackOrder[i], attackOrder[j % (attackOrder.Count)]);
                     if (attackOrder[j % (attackOrder.Count)].IsDead())
-                        attackOrder.Remove(attackOrder[j % (attackOrder.Count)]);
-                    if (AllMonstersDead() || AllPlayersDead())
+                    {
+                        whatHappened += attackOrder[j % (attackOrder.Count)].Name + " has died.\n";
+                        attackOrder.Remove(attackOrder[j % (attackOrder.Count)]);                        
+                    }                        
+                    if (AllMonstersDead())
+                    {
+                        whatHappened += "Battle Won\n";
                         isOver = true;
+                    }
+                    else if (AllPlayersDead())
+                    {
+                        whatHappened += "Battle Lost\n";
+                        isOver = true;
+                    }
                 }
             }
+            return whatHappened;
         }
 
         private void StrengthenMonsters(double diff)
