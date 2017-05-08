@@ -3,9 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DungeonCrawl.Views.BattlePage">
     <StackLayout>
-        <ScrollView HorizontalOptions="CenterAndExpand">
-            <Label x:Name="GameOut" FontSize="18" />
-        </ScrollView>
         <StackLayout Orientation="Horizontal">
             <ListView RowHeight="40" x:Name="PlayerListView"  ItemSelected ="OnPlayerClick">
                 <ListView.ItemTemplate>
@@ -23,5 +20,8 @@
             </ListView>
         </StackLayout>
         <Button x:Name="FightRound" Text="Fight Round" IsEnabled="true" Clicked="OnFightClick"/>
+        <ScrollView HorizontalOptions="CenterAndExpand">
+            <Label x:Name="GameOut" FontSize="18" />
+        </ScrollView>
     </StackLayout>
 </ContentPage>

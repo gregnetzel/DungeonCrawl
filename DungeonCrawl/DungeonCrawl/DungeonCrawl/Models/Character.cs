@@ -11,7 +11,9 @@ namespace DungeonCrawl.Models
         public string Icon { get; set; }
         public ObservableCollection<Item> CurrentItems; // item order HP, Strength, Dexterity, Speed
         private int _hp;
-        public int HP { get {return _hp+CurrentItems[0].HPValue; } set {_hp = value; } }
+        public int HP  {
+            get { return _hp+CurrentItems[0].HPValue; }
+            set { _hp = value; } }
         private int _strength;
         public int Str { get { return _strength + CurrentItems[1].StrValue; } set { _strength = value; } }
         private int _dexterity;

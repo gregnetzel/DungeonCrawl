@@ -35,7 +35,20 @@ namespace DungeonCrawl.Views
         {
             InitializeComponent();
             battle = bat;
-            GameOut.Text = battle.FightRound();            
+            GameOut.Text = battle.FightRound();
+            if (battle.isOver)
+            {
+                if (battle.AllMonstersDead())
+                {
+                    FightRound.Text = "Next Battle";
+                    FightRound.Clicked += OnNextBattleClick;
+                }
+                if (battle.AllPlayersDead())
+                {
+                    FightRound.Text = "Score Screen";
+                    FightRound.Clicked += OnScoreClick;
+                }
+            }
             PlayerListView.ItemsSource = battle.players;
             MonsterListView.ItemsSource = battle.monsters;
         }
@@ -62,6 +75,14 @@ namespace DungeonCrawl.Views
         async void OnFightClick(object sender, EventArgs e)
         {            
             await Navigation.PushAsync(new BattlePage(battle));
+        }
+        async void OnNextBattleClick(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new BattlePage(battle.players));
+        }
+        async void OnScoreClick(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ScorePage());
         }
     }
 }

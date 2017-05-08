@@ -32,6 +32,8 @@ namespace DungeonCrawl.Models
         {
             int damage = attacker.Str;
             defender.HP -= damage;
+            if (defender.HP < 0)
+                defender.HP = 0;
             return attacker.Name + " attacked " + defender.Name + " and did " + damage +" damage.\n";
         }
 
