@@ -12,7 +12,7 @@ namespace DungeonCrawl.Models
         public List<Character> attackOrder;  //to sort monsters and players for attacking order, will sort based on speed stat
         public Battle(ObservableCollection<Player> p)
         {
-            double difficulty = .75; //proportion of character stats to put into monsters
+            double difficulty = .75; //proportion of character stats to put into generated monsters
             monsters = new ObservableCollection< Monster>();
             players = new ObservableCollection<Player>();
             attackOrder = new List<Character>();
@@ -20,9 +20,10 @@ namespace DungeonCrawl.Models
             {
                 players.Add(p[i]);
                 monsters.Add(new Monster());
+                if (!p[i].IsDead()) //keep dead guys from attackorder
+                    attackOrder.Add(p[i]);
             }
             StrengthenMonsters(difficulty);
-            attackOrder.AddRange(players);
             attackOrder.AddRange(monsters);
             attackOrder.Sort();
             attackOrder.Reverse();
@@ -41,15 +42,15 @@ namespace DungeonCrawl.Models
         {
             string whatHappened = "";
             int j = 0;
-            for (int i = 0; i < attackOrder.Count; i++)
+            for (int i = 0; i < attackOrder.Count; i++) //loop over attacking list
             {
                 if (!attackOrder[i].IsDead() && !isOver)
                 {
                     j = i + 1;
-                    while (attackOrder[i].GetType() == attackOrder[j % (attackOrder.Count)].GetType())                    
+                    while (attackOrder[i].GetType() == attackOrder[j % (attackOrder.Count)].GetType()) //go down list until you hit first of other type               
                         j++;
                     whatHappened += Fight(attackOrder[i], attackOrder[j % (attackOrder.Count)]);
-                    if (attackOrder[j % (attackOrder.Count)].IsDead())
+                    if (attackOrder[j % (attackOrder.Count)].IsDead()) //remove from attacking list if character died
                     {
                         whatHappened += attackOrder[j % (attackOrder.Count)].Name + " has died.\n";
                         attackOrder.Remove(attackOrder[j % (attackOrder.Count)]);                        
