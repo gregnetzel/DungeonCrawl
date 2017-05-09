@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using System;
 
 namespace DungeonCrawl.Models
 {
@@ -11,6 +12,7 @@ namespace DungeonCrawl.Models
         private SQLiteConnection database;
         private static object collisionLock = new object();
         public ObservableCollection<Item> Items { get; set; }
+        Random rng;
         public ItemDataAccess()
         {
             database =
@@ -22,6 +24,7 @@ namespace DungeonCrawl.Models
             {
                 AddDefaultItems();
             }
+            rng = new Random();
         }
         private void AddDefaultItems()
         {
@@ -131,8 +134,7 @@ namespace DungeonCrawl.Models
         }
         public Item GetRandomItem()
         {
-            var temp = database.Query<Item>("SELECT* FROM table ORDER BY RANDOM() LIMIT 1");
-            return temp[0];
+            return Items[rng.Next(0,Items.Count)];
         }
         public void DeleteAllItems()
         {

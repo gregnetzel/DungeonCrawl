@@ -28,44 +28,55 @@ namespace DungeonCrawl.Models
             Str = stats;
         }
 
-        public void AddXP(int XP)
+        public string AddXP(int XP)
         {
+            string temp="";
             CurrentXP += XP;
-            while (CurrentXP >= 100)
+            while (CurrentXP >= 100*Level)
             {
-                LevelUp();
-                CurrentXP -= 100;
+                temp += LevelUp();
+                CurrentXP -= 100*Level;
             }
+            return temp;
         }
 
-        public void LevelUp()
+        public string LevelUp()
         {
             Random rng = new Random();
-            HP += 5*Level;
+            HP += 2*Level;
             Str += rng.Next(1, 2 * Level);
             Spd += rng.Next(1, 2 * Level);
             Dex += rng.Next(1, 2 * Level);
             Level++;
+            return Name + " has risen to level " + Level + ".\n";
         }
 
-        public void GetItem(Item item)
+        public string GetItem(Item item)
         {
+            string temp = "Player " + Name + " found and item: " + item.Name;
             if (item.HPValue > this.CurrentItems[0].HPValue)
             {
                 CurrentItems[0] = item;
+                temp += " and equipped it.\n";
             }
             else if(item.StrValue > this.CurrentItems[1].StrValue)
             {
                 CurrentItems[1] = item;
+                temp += " and equipped it.\n";
             }
             else if (item.DexValue > this.CurrentItems[2].DexValue)
             {
                 CurrentItems[2] = item;
+                temp += " and equipped it.\n";
             }
             else if (item.SpdValue > this.CurrentItems[3].SpdValue)
             {
                 CurrentItems[3] = item;
+                temp += " and equipped it.\n";
             }
+            else
+                temp += " and did not equip it.\n";
+            return temp;
         }
     }
 }

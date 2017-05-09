@@ -10,12 +10,19 @@ namespace DungeonCrawl.Models
         public ObservableCollection<Monster> monsters;
         public ObservableCollection<Player> players;
         public List<Character> attackOrder;  //to sort monsters and players for attacking order, will sort based on speed stat
+        private int xpPool;
+        private List<Item> itemPool;
+        private ItemDataAccess dataAccess;
+        public double difficulty;
         public Battle(ObservableCollection<Player> p)
         {
-            double difficulty = .75; //proportion of character stats to put into generated monsters
+            difficulty = 0.75; //proportion of character stats to put into generated monsters
+            xpPool = 0;
+            dataAccess = new ItemDataAccess();
             monsters = new ObservableCollection< Monster>();
             players = new ObservableCollection<Player>();
             attackOrder = new List<Character>();
+            itemPool = new List<Item>();
             for (int i = 0; i < 4; i++)
             {
                 players.Add(p[i]);
@@ -53,16 +60,38 @@ namespace DungeonCrawl.Models
                     if (attackOrder[j % (attackOrder.Count)].IsDead()) //remove from attacking list if character died
                     {
                         whatHappened += attackOrder[j % (attackOrder.Count)].Name + " has died.\n";
-                        attackOrder.Remove(attackOrder[j % (attackOrder.Count)]);                        
+                        if (attackOrder[j % (attackOrder.Count)].GetType() == typeof(Monster))//check if dead guy is monster
+                        {
+                            Monster temp = attackOrder[j % (attackOrder.Count)] as Monster;
+                            xpPool += temp.DropXP();
+                            itemPool.Add(dataAccess.GetRandomItem());
+                        }
+                        attackOrder.Remove(attackOrder[j % (attackOrder.Count)]);                                
                     }                        
                     if (AllMonstersDead())
                     {
                         whatHappened += "Battle Won\n";
+                        foreach (Player player in players)
+                        {
+                            if (!player.IsDead())
+                                whatHappened += player.AddXP(xpPool);
+                        }
+                        int ind = 0;
+                        int itemind = 0;
+                        while (itemPool.Count > 0)
+                        {
+                            if (!players[ind%4].IsDead())
+                            {
+                                whatHappened += players[ind % 4].GetItem(itemPool[0]);
+                                itemPool.RemoveAt(0);
+                            }
+                            ind++;
+                        }
                         isOver = true;
                     }
                     else if (AllPlayersDead())
                     {
-                        whatHappened += "Battle Lost\n";
+                        whatHappened += "Battle Lost\n\n\nGame Over\n";
                         isOver = true;
                     }
                 }
@@ -93,7 +122,10 @@ namespace DungeonCrawl.Models
                 numStats -= temp;
                 GiveStatsToMonster(monster, temp);
                 monster.Level = lvl / 4;
-                monster.HP = totalHP / 4;
+                if (totalHP / 4 == 0)
+                    monster.HP = 1;
+                else
+                    monster.HP = totalHP / 4;
             }
         }
         private void GiveStatsToMonster(Monster mon, int stat)

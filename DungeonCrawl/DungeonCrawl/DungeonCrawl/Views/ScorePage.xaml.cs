@@ -17,5 +17,10 @@ namespace DungeonCrawl.Views
 			InitializeComponent ();
             Title = "Score";
 		}
-	}
+        async void OnStartNewGame(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewGamePage());
+        }
+        
+    }
 }

@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DungeonCrawl.Views.ScorePage">
-    <Label Text="Score Page" FontSize="20"
-           VerticalOptions="Center" 
+    <StackLayout>
+        <Label Text="Final Score" FontSize="20" 
            HorizontalOptions="Center" />
+        <Button x:Name="RestartGame" Text="Start New Game" IsEnabled="true" Clicked="OnStartNewGame"/>
+    </StackLayout>    
 </ContentPage>

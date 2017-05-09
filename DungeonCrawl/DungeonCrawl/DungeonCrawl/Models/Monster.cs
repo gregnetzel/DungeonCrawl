@@ -24,10 +24,10 @@ namespace DungeonCrawl.Models
             return ret;
         }
 
-        // Gives an XP to Players that killed the monster. Assuming that XP from monsters is just its level * 2
+        // Gives XP to battle after death
         public int DropXP()
         {
-            return Level * 2;
+            return (Dex+Str+Spd) * 2;
         }
     }
 }
