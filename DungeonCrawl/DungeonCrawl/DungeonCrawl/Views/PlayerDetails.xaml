@@ -5,6 +5,13 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="CharDetails" FontSize="18"/>
+            <ListView RowHeight="40" x:Name="ItemListView"  ItemSelected ="OnItemClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

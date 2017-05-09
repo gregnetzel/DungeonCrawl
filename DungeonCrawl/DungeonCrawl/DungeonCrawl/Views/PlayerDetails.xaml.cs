@@ -22,8 +22,14 @@ namespace DungeonCrawl.Views
             InitializeComponent();
 
             Title = player.Name;
+            ItemListView.ItemsSource = player.CurrentItems;
 
             CharDetails.Text = $" Level: {player.Level}\n HP: {player.HP}\n Str: {player.Str}\n Dex: {player.Dex}\n Spd: {player.Spd}";
+        }
+        async void OnItemClick(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as Item;
+            await Navigation.PushAsync(new ItemsDetails(item));
         }
     }
 }
