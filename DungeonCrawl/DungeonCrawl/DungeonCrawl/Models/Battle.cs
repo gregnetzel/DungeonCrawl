@@ -38,11 +38,33 @@ namespace DungeonCrawl.Models
         public bool isOver = false;
         public string Fight(Character attacker, Character defender)
         {
-            int damage = attacker.Str;
-            defender.HP -= damage;
-            if (defender.HP < 0)
-                defender.HP = 0;
-            return attacker.Name + " attacked " + defender.Name + " and did " + damage +" damage.\n";
+            Random rnd = new Random();
+            int random = rnd.Next(1,13);
+			int damage = attacker.Str;
+
+
+            //if random is 1 or 2, it is a miss
+            if (random <= 2)
+            {
+                return attacker.Name + " attacked " + defender.Name + " and missed\n";
+            }
+
+            //if random is 10 - 12, double attack
+            else if (random >= 10)
+            {
+                damage *= 2;
+                defender.HP -= damage;
+				if (defender.HP < 0)
+					defender.HP = 0;
+                return attacker.Name + "  critically attacked " + defender.Name + " with the double damage of " + damage + "\n";
+            }
+            else
+            {
+                defender.HP -= damage;
+                if (defender.HP < 0)
+                    defender.HP = 0;
+                return attacker.Name + " attacked " + defender.Name + " and did " + damage + " damage.\n";
+            }
         }
 
         public string FightRound()
