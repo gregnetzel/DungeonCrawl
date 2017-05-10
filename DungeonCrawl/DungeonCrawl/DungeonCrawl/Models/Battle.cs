@@ -14,8 +14,10 @@ namespace DungeonCrawl.Models
         private List<Item> itemPool;
         private ItemDataAccess dataAccess;
         public double difficulty;
+        Random rng;
         public Battle(ObservableCollection<Player> p)
         {
+            rng = new Random();
             difficulty = 0.75; //proportion of character stats to put into generated monsters
             xpPool = 0;
             dataAccess = new ItemDataAccess();
@@ -38,19 +40,18 @@ namespace DungeonCrawl.Models
         public bool isOver = false;
         public string Fight(Character attacker, Character defender)
         {
-            Random rnd = new Random();
-            int random = rnd.Next(1,13);
+            int random = rng.Next(1,20);
 			int damage = attacker.Str;
 
 
-            //if random is 1 or 2, it is a miss
-            if (random <= 2)
+            //if random is 1 it is a miss
+            if (random <= 1)
             {
                 return attacker.Name + " attacked " + defender.Name + " and missed\n";
             }
 
-            //if random is 10 - 12, double attack
-            else if (random >= 10)
+            //if random is >18 double attack
+            else if (random >= 18)
             {
                 damage *= 2;
                 defender.HP -= damage;
@@ -96,10 +97,12 @@ namespace DungeonCrawl.Models
                         foreach (Player player in players)
                         {
                             if (!player.IsDead())
+                            {
+                                player.numRounds++;
                                 whatHappened += player.AddXP(xpPool);
+                            }
                         }
                         int ind = 0;
-                        int itemind = 0;
                         while (itemPool.Count > 0)
                         {
                             if (!players[ind%4].IsDead())

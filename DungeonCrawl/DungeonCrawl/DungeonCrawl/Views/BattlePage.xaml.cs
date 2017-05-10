@@ -103,20 +103,18 @@ namespace DungeonCrawl.Views
         }
         async void OnScoreClick(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ScorePage());
+            await Navigation.PushAsync(new ScorePage(players));
         }
         private string AutoBattle()
         {
-            string temp = "";
-            int maxStringLength = 10000000;
+            string temp = "Game Over";
             while (!battle.AllPlayersDead())
             {
-                temp = Trunc(temp, maxStringLength);
                 if (battle.AllMonstersDead())
                 {
                     battle = new Battle(players);
                 }
-                temp += battle.FightRound();
+                battle.FightRound();
             }
             return temp;
         }

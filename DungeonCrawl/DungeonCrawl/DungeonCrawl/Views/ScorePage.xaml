@@ -3,8 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DungeonCrawl.Views.ScorePage">
     <StackLayout>
-        <Label Text="Final Score" FontSize="20" 
-           HorizontalOptions="Center" />
+        <Label Text="Final Stats" FontSize="20" HorizontalOptions="Center" />
+        <ListView RowHeight="40" x:Name="PlayerListView"  ItemSelected ="OnPlayerClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Button x:Name="RestartGame" Text="Start New Game" IsEnabled="true" Clicked="OnStartNewGame"/>
     </StackLayout>    
 </ContentPage>

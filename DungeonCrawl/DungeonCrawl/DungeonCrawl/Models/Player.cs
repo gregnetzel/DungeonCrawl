@@ -8,6 +8,8 @@ namespace DungeonCrawl.Models
     public class Player:Character
     {
         public int CurrentXP { get; set; }
+        private int _rounds;
+        public int numRounds { get { return _rounds; } set { _rounds = value; } }
         public Player()
         {
             CurrentItems = new ObservableCollection<Item>();
