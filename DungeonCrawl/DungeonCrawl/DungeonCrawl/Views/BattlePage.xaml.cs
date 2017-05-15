@@ -16,22 +16,24 @@ namespace DungeonCrawl.Views
         public ObservableCollection<Player> players;
         public Battle battle;
         private bool OnAuto = false;
+        private int battleCt;
         public BattlePage ()//start of auto game
 		{
 			InitializeComponent ();
             players = AutoPlayers();
             PlayerListView.ItemsSource = players;
-            battle = new Battle(players);
+            battle = new Battle(players, 1);
             MonsterListView.ItemsSource = battle.monsters;
             OnAuto = true;
         }
-        public BattlePage(ObservableCollection<Player> p, bool auto)//normal game starter
+        public BattlePage(ObservableCollection<Player> p, bool auto, int bCount)//normal game starter
         {
+            battleCt = bCount;
             InitializeComponent();
             OnAuto = auto;
             players = p;
             PlayerListView.ItemsSource = players;
-            battle = new Battle(players);
+            battle = new Battle(players, ++battleCt);
             MonsterListView.ItemsSource = battle.monsters;
         }
         public BattlePage(Battle bat, bool auto)//continuing battle pages
@@ -99,7 +101,7 @@ namespace DungeonCrawl.Views
         }
         async void OnNextBattleClick(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BattlePage(battle.players, OnAuto));
+            await Navigation.PushAsync(new BattlePage(battle.players, OnAuto, battleCt));
         }
         async void OnScoreClick(object sender, EventArgs e)
         {
@@ -108,11 +110,12 @@ namespace DungeonCrawl.Views
         private string AutoBattle()
         {
             string temp = "Game Over";
+            int ind = 1;
             while (!battle.AllPlayersDead())
             {
                 if (battle.AllMonstersDead())
                 {
-                    battle = new Battle(players);
+                    battle = new Battle(players,ind++);
                 }
                 battle.FightRound();
             }

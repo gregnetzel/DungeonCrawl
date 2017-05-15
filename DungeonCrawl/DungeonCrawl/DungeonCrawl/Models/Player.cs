@@ -7,18 +7,21 @@ namespace DungeonCrawl.Models
 {
     public class Player:Character
     {
+        static Random rng = new Random();
         public int CurrentXP { get; set; }
         private int _rounds;
         public int numRounds { get { return _rounds; } set { _rounds = value; } }
+        public string NameRound { get { return Name+": Rounds Survived: "+numRounds; } }
+
         public Player()
         {
+            maxStat = 99999;
             CurrentItems = new ObservableCollection<Item>();
             Level = 1;
             for (int i = 0; i < 4; i++)
             {
                 CurrentItems.Add(new Item());
             }
-            Random rng = new Random();
             int stats = 10;
             HP = stats;
             int temp = rng.Next(0, stats);

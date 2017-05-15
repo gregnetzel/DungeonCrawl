@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DungeonCrawl.Views.EditMonsterDetails">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation ="Horizontal">
+                <Label Text="Name: "/>
+                <Entry x:Name="NameXAML" FontSize="18" Text="{Binding Name}"/>
+            </StackLayout>
+            <StackLayout Orientation ="Horizontal">
+                <Label Text="Starting Strength Multiplier: "/>
+                <Entry x:Name="MultXAML" FontSize="18" Text="{Binding Multiplier}"/>
+            </StackLayout>
+            <Button x:Name="SaveMonster" Text="Save" IsEnabled="true" Clicked="OnSaveClicked"/>
+            <Button x:Name="DeleteMonster" Text="Delete" IsEnabled="true" Clicked="OnDeleteClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

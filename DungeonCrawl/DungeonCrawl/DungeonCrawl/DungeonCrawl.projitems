@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Character.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ItemDataAccess.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Monster.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MonsterDataAccess.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Player.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -37,6 +38,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\EditItemDetails.xaml.cs">
       <DependentUpon>EditItemDetails.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\EditMonsterDetails.xaml.cs">
+      <DependentUpon>EditMonsterDetails.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\GamePage.xaml.cs">
@@ -145,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MonsterDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\EditMonsterDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

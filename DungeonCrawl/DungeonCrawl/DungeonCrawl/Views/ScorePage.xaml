@@ -4,10 +4,11 @@
              x:Class="DungeonCrawl.Views.ScorePage">
     <StackLayout>
         <Label Text="Final Stats" FontSize="20" HorizontalOptions="Center" />
+        <Label x:Name="ScoreBox" FontSize="18" HorizontalOptions="Center" />
         <ListView RowHeight="40" x:Name="PlayerListView"  ItemSelected ="OnPlayerClick">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" />
+                    <TextCell Text="{Binding NameRound}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -26,7 +26,7 @@ namespace DungeonCrawl.Views
        
         async void OnStartClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BattlePage(players, false));
+            await Navigation.PushAsync(new BattlePage(players, false, 1));
         }
     }
 }

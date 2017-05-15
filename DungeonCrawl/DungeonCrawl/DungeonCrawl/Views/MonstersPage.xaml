@@ -2,4 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DungeonCrawl.Views.MonstersPage">
+    <ScrollView>
+        <StackLayout>
+            <Button x:Name="AddMonster" Text="Add New Monster" IsEnabled="true" Clicked="OnAddClicked"/>
+            <ListView RowHeight="40" x:Name="MonstersView"  ItemSelected ="OnMonsterClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

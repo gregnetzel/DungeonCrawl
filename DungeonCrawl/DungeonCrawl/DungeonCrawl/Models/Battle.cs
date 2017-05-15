@@ -11,16 +11,20 @@ namespace DungeonCrawl.Models
         public ObservableCollection<Player> players;
         public List<Character> attackOrder;  //to sort monsters and players for attacking order, will sort based on speed stat
         private int xpPool;
+        private int battleNumber;
         private List<Item> itemPool;
         private ItemDataAccess dataAccess;
+        private MonsterDataAccess monsAccess;
         public double difficulty;
         Random rng;
-        public Battle(ObservableCollection<Player> p)
+        public Battle(ObservableCollection<Player> p, int battlNum)
         {
+            battleNumber = battlNum;
             rng = new Random();
             difficulty = 0.75; //proportion of character stats to put into generated monsters
             xpPool = 0;
             dataAccess = new ItemDataAccess();
+            monsAccess = new MonsterDataAccess();
             monsters = new ObservableCollection< Monster>();
             players = new ObservableCollection<Player>();
             attackOrder = new List<Character>();
@@ -28,7 +32,7 @@ namespace DungeonCrawl.Models
             for (int i = 0; i < 4; i++)
             {
                 players.Add(p[i]);
-                monsters.Add(new Monster());
+                monsters.Add(new Monster(monsAccess.GetRandomMonster()));
                 if (!p[i].IsDead()) //keep dead guys from attackorder
                     attackOrder.Add(p[i]);
             }
@@ -129,28 +133,30 @@ namespace DungeonCrawl.Models
             int numStats = 0;
             int totalHP = 0;
             int lvl = 0;
+            int playersLive = 0;
             Random rng = new Random();
             foreach (var player in players)
             {
                 numStats += player.Dex + player.Spd + player.Str;
                 totalHP += player.HP;
                 lvl += player.Level;
+                if (!player.IsDead())
+                    playersLive++;
             }
-            numStats = (int)(diff * numStats);
             int temp;
-            int ind = 1;
+            double multiplier;
             foreach (var monster in monsters)
             {
                 temp = 0;
-                monster.Name = "Monster " + ind++;
                 temp = rng.Next(0,numStats-temp);
                 numStats -= temp;
-                GiveStatsToMonster(monster, temp);
-                monster.Level = lvl / 4;
-                if (totalHP / 4 == 0)
+                multiplier = monster.Multiplier * (1 + battleNumber / 10.0);
+                GiveStatsToMonster(monster, (int)(multiplier*temp));
+                monster.Level = lvl / playersLive;
+                if (totalHP / playersLive == 0)
                     monster.HP = 1;
                 else
-                    monster.HP = totalHP / 4;
+                    monster.HP = (int)(totalHP * multiplier / playersLive);
             }
         }
         private void GiveStatsToMonster(Monster mon, int stat)

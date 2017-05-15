@@ -20,8 +20,21 @@ namespace DungeonCrawl.Views
 			InitializeComponent ();
             players = play;
             PlayerListView.ItemsSource = players;
-            Title = "Score";
+            Title = "Score\n";
+            ScoreBox.Text = CalculateScore()+"\n";
 		}
+        private long CalculateScore()
+        {
+            long count = 0;
+            foreach (Player p in players)
+            {
+                count += p.Level * (p.numRounds + 1);
+                count += p.Spd * (p.numRounds + 1);
+                count += p.Dex * (p.numRounds + 1);
+                count += p.Str * (p.numRounds + 1);
+            }
+            return count;
+        }
         async void OnStartNewGame(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new GamePage());

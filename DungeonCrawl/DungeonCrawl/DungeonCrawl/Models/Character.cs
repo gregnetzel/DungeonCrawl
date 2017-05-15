@@ -7,13 +7,13 @@ namespace DungeonCrawl.Models
 {
     public class Character:IComparable
     {
-        private int maxStat = 9999;
+        public int maxStat;
         public string Name { get; set; }
         public string Icon { get; set; }
         public ObservableCollection<Item> CurrentItems; // item order HP, Strength, Dexterity, Speed
         private int _hp;
         public int HP  {
-            get { return _hp+CurrentItems[0].HPValue; }
+            get { return _hp; }
             set {
                 if (value >= maxStat)
                     _hp = maxStat;
@@ -57,6 +57,10 @@ namespace DungeonCrawl.Models
         {
             if (HP < 1) return true;
             return false;
+        }
+        public override string ToString()
+        {
+            return NameAndHealth;
         }
     }
 }
