@@ -48,6 +48,7 @@ namespace DungeonCrawl.Views
                 if (battle.AllPlayersDead())
                 {
                     FightRound.Text = "Score Screen";
+                    FightRound.Clicked -= OnFightClick;
                     FightRound.Clicked += OnScoreClick;
                 }
                 else
@@ -63,11 +64,13 @@ namespace DungeonCrawl.Views
                     if (battle.AllMonstersDead())
                     {
                         FightRound.Text = "Next Battle";
+                        FightRound.Clicked -= OnFightClick;
                         FightRound.Clicked += OnNextBattleClick;
                     }
                     if (battle.AllPlayersDead())
                     {
                         FightRound.Text = "Score Screen";
+                        FightRound.Clicked -= OnFightClick;
                         FightRound.Clicked += OnScoreClick;
                     }
                 }                

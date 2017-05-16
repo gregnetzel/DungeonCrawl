@@ -3,25 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DungeonCrawl.Views.BattlePage">
     <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <ListView RowHeight="40" x:Name="PlayerListView"  ItemSelected ="OnPlayerClick">
-                <ListView.ItemTemplate>
-                    <DataTemplate>                       
-                        <TextCell Text="{Binding NameAndHealth}" />                                               
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <ListView RowHeight="40" x:Name="MonsterListView"  ItemSelected ="OnMonsterClick">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding NameAndHealth}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-        <Button x:Name="FightRound" Text="Fight Round" IsEnabled="true" Clicked="OnFightClick"/>
-        <ScrollView HorizontalOptions="CenterAndExpand">
-            <Label x:Name="GameOut" FontSize="18" />
-        </ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal" Grid.Row="0">
+                <ListView RowHeight="40" x:Name="PlayerListView"  ItemSelected ="OnPlayerClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding NameAndHealth}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView RowHeight="40" x:Name="MonsterListView"  ItemSelected ="OnMonsterClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding NameAndHealth}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Button x:Name="FightRound" Text="Fight Round" IsEnabled="true" Clicked="OnFightClick" Grid.Row="1"/>
+            <ScrollView HorizontalOptions="CenterAndExpand" Grid.Row="2">
+                <Label x:Name="GameOut" FontSize="18" />
+            </ScrollView>
+        </Grid>
     </StackLayout>
+    
 </ContentPage>

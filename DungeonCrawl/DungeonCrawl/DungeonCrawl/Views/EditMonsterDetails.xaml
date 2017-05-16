@@ -6,11 +6,11 @@
         <StackLayout>
             <StackLayout Orientation ="Horizontal">
                 <Label Text="Name: "/>
-                <Entry x:Name="NameXAML" FontSize="18" Text="{Binding Name}"/>
+                <Entry x:Name="NameXAML" FontSize="18" Text="{Binding Name}" HorizontalOptions="FillAndExpand" />
             </StackLayout>
             <StackLayout Orientation ="Horizontal">
                 <Label Text="Starting Strength Multiplier: "/>
-                <Entry x:Name="MultXAML" FontSize="18" Text="{Binding Multiplier}"/>
+                <Entry x:Name="MultXAML" FontSize="18" Text="{Binding Multiplier}" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
             </StackLayout>
             <Button x:Name="SaveMonster" Text="Save" IsEnabled="true" Clicked="OnSaveClicked"/>
             <Button x:Name="DeleteMonster" Text="Delete" IsEnabled="true" Clicked="OnDeleteClicked"/>

@@ -20,7 +20,6 @@ namespace DungeonCrawl.Models
               DependencyService.Get<IDatabaseConnection>().
               DbConnection();
             database.CreateTable<Monster>();
-            DeleteAllMonsters();
             this.Monsters = new ObservableCollection<Monster>(database.Table<Monster>());
             if (!database.Table<Monster>().Any())// If empty stick in defaults
             {
@@ -63,8 +62,8 @@ namespace DungeonCrawl.Models
         {
             Monster temp = new Monster
             {
-                Name = "",
-                Multiplier = .75
+                Name = "Generic Monster",
+                Multiplier = .5
             };
             Monsters.Add(temp);
             database.Insert(temp);

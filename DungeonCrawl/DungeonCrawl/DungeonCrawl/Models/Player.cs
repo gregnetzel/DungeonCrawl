@@ -37,10 +37,10 @@ namespace DungeonCrawl.Models
         {
             string temp="";
             CurrentXP += XP;
-            while (CurrentXP >= 100*Level)
+            while (CurrentXP >= 50*Level)
             {
                 temp += LevelUp();
-                CurrentXP -= 100*Level;
+                CurrentXP -= 50*Level;
             }
             return temp;
         }
