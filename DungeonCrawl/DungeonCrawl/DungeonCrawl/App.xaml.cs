@@ -33,6 +33,10 @@ namespace DungeonCrawl
                     {
                         Title = "Monsters",
                     },
+                    new NavigationPage(new SettingsPage())
+                    {
+                        Title = "Settings",
+                    },
                     new NavigationPage(new AboutPage())
                     {
                         Title = "About",
