@@ -10,7 +10,7 @@
 
         <Label Text="Definitely Not DND" FontSize="50" HorizontalTextAlignment="Center"/>
 
-        <Image Source="shark.png" />
+        <Image Source="shark.png" HorizontalOptions="Center"/>
 
         <Button x:Name="NewGame" Text="New Game" IsEnabled="true" Clicked="OnNewGame"/>
         <Button x:Name="AutoPlay" Text="Auto Play" IsEnabled="true" Clicked="OnAutoPlay"/>

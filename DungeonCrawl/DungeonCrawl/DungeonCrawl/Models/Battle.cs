@@ -153,7 +153,7 @@ namespace DungeonCrawl.Models
                 multiplier = monster.Multiplier * (1 + battleNumber / 10.0);
                 GiveStatsToMonster(monster, (int)(multiplier*temp));
                 monster.Level = lvl / playersLive;
-                if (totalHP / playersLive == 0)
+                if (totalHP * multiplier / playersLive < 1)
                     monster.HP = 1;
                 else
                     monster.HP = (int)(totalHP * multiplier / playersLive);

@@ -9,15 +9,15 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackLayout Orientation="Horizontal" Grid.Row="0">
-                <ListView RowHeight="40" x:Name="PlayerListView"  ItemSelected ="OnPlayerClick">
+            <StackLayout Orientation="Horizontal" Grid.Row="0" >
+                <ListView RowHeight="40" x:Name="PlayerListView"  ItemSelected ="OnPlayerClick" Header="Player Characters">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding NameAndHealth}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <ListView RowHeight="40" x:Name="MonsterListView"  ItemSelected ="OnMonsterClick">
+                <ListView RowHeight="40" x:Name="MonsterListView"  ItemSelected ="OnMonsterClick" Header="Player Characters">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding NameAndHealth}" />

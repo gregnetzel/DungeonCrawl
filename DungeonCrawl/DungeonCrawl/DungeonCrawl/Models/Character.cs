@@ -13,12 +13,12 @@ namespace DungeonCrawl.Models
         public ObservableCollection<Item> CurrentItems; // item order HP, Strength, Dexterity, Speed
         private int _hp;
         public int HP  {
-            get { return _hp; }
+            get { return _hp + CurrentItems[0].HPValue; }
             set {
                 if (value >= maxStat)
                     _hp = maxStat;
                 else
-                    _hp = value; } }
+                    _hp = value - CurrentItems[0].HPValue; } }
         private int _strength;
         public int Str {
             get { return _strength + CurrentItems[1].StrValue; }
