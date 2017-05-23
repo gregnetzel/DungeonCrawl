@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using DungeonCrawl;
 
 namespace DungeonCrawl.Models
 {
@@ -44,7 +45,13 @@ namespace DungeonCrawl.Models
         public bool isOver = false;
         public string Fight(Character attacker, Character defender)
         {
-            int random = rng.Next(1,20);
+
+            int random;
+
+            if ((bool)Xamarin.Forms.Application.Current.Properties["OnlyCrit"]) random = 18;
+            else random = rng.Next(1, 20);
+
+            //int random = rng.Next(1,20);
 			int damage = attacker.Str;
 
 
