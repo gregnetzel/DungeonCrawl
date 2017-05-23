@@ -14,6 +14,7 @@
             <Label Text="Greg Netzel"/>
             <Label Text="Gabe Ramos"/>
             <Label Text="Bryson Shea"/>
+            <Label Text="May 23 2017" />
         </StackLayout>
     </ScrollView>
     
