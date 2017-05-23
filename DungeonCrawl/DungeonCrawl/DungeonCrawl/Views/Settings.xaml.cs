@@ -9,14 +9,13 @@ using Xamarin.Forms.Xaml;
 
 namespace DungeonCrawl.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SettingsPage : ContentPage
-    {
-        public SettingsPage()
-        {
-            InitializeComponent();
-        }
-
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class Settings : ContentPage
+	{
+		public Settings ()
+		{
+			InitializeComponent ();
+		}
         private void OnUseServerItems(object sender, EventArgs e)
         {
             if (ItemsFromServerSwitch.IsToggled)
