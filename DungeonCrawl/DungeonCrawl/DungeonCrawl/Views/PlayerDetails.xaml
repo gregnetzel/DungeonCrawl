@@ -4,6 +4,7 @@
              x:Class="DungeonCrawl.Views.PlayerDetails">
     <ContentPage.Content>
         <StackLayout>
+            <Image Source="http://www.avatarsinpixels.com/Public/images/pixelavatarslarge.png" />
             <Label x:Name="CharDetails" FontSize="18"/>
             <Label Text="Inventory"  FontSize="12"/>
             <ListView RowHeight="40" x:Name="ItemListView"  ItemSelected ="OnItemClick">
