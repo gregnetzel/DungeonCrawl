@@ -13,9 +13,6 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\StartUpPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -87,10 +84,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Models\BattleEffects.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\StartUpPage.xaml.cs">
-      <DependentUpon>StartUpPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
