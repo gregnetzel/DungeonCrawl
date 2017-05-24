@@ -4,6 +4,10 @@ using System.Linq;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Net.Http;
+using System.Text;
 
 namespace DungeonCrawl.Models
 {
@@ -25,7 +29,54 @@ namespace DungeonCrawl.Models
                 AddDefaultItems();
             }
             rng = new Random();
+            
         }
+        public class JObj
+        {
+            [JsonProperty(PropertyName = "error_code")]
+            public string error_code;
+            [JsonProperty(PropertyName = "msg")]
+            string msg;
+            [JsonProperty(PropertyName = "data")]
+            public APItem[] data;
+        }
+
+        public struct PostData
+        {            
+            [JsonProperty(PropertyName = "randomItemOption")]
+            public int random;
+            [JsonProperty(PropertyName = "superItemOption")]
+            public int super;
+        }
+
+        public async void GetAPIItems(bool rand, bool super)
+        {
+            database.DeleteAll<Item>();
+            int randI = 0;
+            int superI = 0;
+            if (rand == true)
+                randI = 1;
+            if (super == true)
+                superI = 1;
+            var temp = await GetItemsAsync(randI, superI);
+            foreach (var item in temp.data)
+            {
+                SaveItem(item);
+            }
+        }
+
+        public async Task<JObj> GetItemsAsync(int rand, int sup)
+        {
+            string post = JsonConvert.SerializeObject(new PostData { random = rand, super = sup });
+            var client = new System.Net.Http.HttpClient();
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            var address = $"http://gamehackathon.azurewebsites.net/api/GetItemsList";
+            var response = await client.PostAsync(address, new StringContent(post, Encoding.UTF8, "application/json"));
+            var itemJson = response.Content.ReadAsStringAsync().Result;
+            var obj = JsonConvert.DeserializeObject<JObj>(itemJson);
+            return obj;
+        }
+
         private void AddDefaultItems()
         {
             Item temp, temp1, temp2, temp3;
@@ -101,7 +152,30 @@ namespace DungeonCrawl.Models
                 return query.AsEnumerable();
             }
         }
-
+        public void SaveItem(APItem itemInstance)
+        {
+            int spd = 0;
+            int dex = 0;
+            int str = 0;
+            int def = 0;
+            if (itemInstance.AttribMod == "Spd")
+                spd = itemInstance.Tier;
+            if (itemInstance.AttribMod == "Str")
+                str = itemInstance.Tier;
+            if (itemInstance.AttribMod == "Dex")
+                dex = itemInstance.Tier;
+            if (itemInstance.AttribMod == "Def")
+                def = itemInstance.Tier;
+            Item item = new Item
+            {
+                Name = itemInstance.Name,
+                StrValue = str,
+                SpdValue = spd,
+                DexValue = def
+            };
+            Items.Add(item);
+            database.Insert(item);                    
+        }
         public bool SaveItem(Item itemInstance)
         {
             lock (collisionLock)

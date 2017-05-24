@@ -66,8 +66,10 @@ namespace DungeonCrawl.Views
 
         private void OnBattleEvents(object sender, EventArgs e)
         {
-            if (BattleEventsSwitch.IsToggled) Application.Current.Properties["BattleEventsAllowed"] = true;
-            else (BattleEventsSwitch.IsToggled)Application.Current.Properties["BattleEventsAllowed"] = false;
+            if (BattleEventsSwitch.IsToggled)
+                Application.Current.Properties["BattleEventsAllowed"] = true;
+            else
+                Application.Current.Properties["BattleEventsAllowed"] = false;
         }
     }
 }

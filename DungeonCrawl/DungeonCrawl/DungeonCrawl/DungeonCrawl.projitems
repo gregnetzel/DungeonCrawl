@@ -19,6 +19,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)IDatabaseConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\APItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Battle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Character.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ItemDataAccess.cs" />
