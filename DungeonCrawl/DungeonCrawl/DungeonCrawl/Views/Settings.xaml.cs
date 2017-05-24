@@ -38,6 +38,7 @@ namespace DungeonCrawl.Views
                 SuperResultsSwitch.IsEnabled = false;
                 Application.Current.Properties["ServerItems"] = false;
                 data.DeleteAllItems();
+                data.AddDefaultItems();
             }
         }
 

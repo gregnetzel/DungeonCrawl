@@ -78,7 +78,7 @@ namespace DungeonCrawl.Models
             return obj;
         }
 
-        private void AddDefaultItems()
+        public void AddDefaultItems()
         {
             Item temp, temp1, temp2, temp3;
             for (int i = 1; i < 11; i++)
@@ -172,7 +172,11 @@ namespace DungeonCrawl.Models
                 Name = itemInstance.Name,
                 StrValue = str,
                 SpdValue = spd,
-                DefValue = def
+                DefValue = def,
+                HPValue = hp,
+                Creator = itemInstance.Creator,
+                Usage = itemInstance.Usage,
+                Image = itemInstance.Image
             };
             Items.Add(item);
             database.Insert(item);                    

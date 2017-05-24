@@ -25,6 +25,7 @@ namespace DungeonCrawl.Views
             InitializeComponent();
             dataAccess = new ItemDataAccess();
             tItem = item;
+            ItemImage.Source = item.Image;
         }
         protected override void OnAppearing()
         {
