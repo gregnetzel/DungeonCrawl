@@ -54,27 +54,51 @@ namespace DungeonCrawl.Models
             //int random = rng.Next(1,20);
 			int damage = attacker.Str;
 
-
             //if random is 1 it is a miss
             if (random <= 1)
             {
+                if (attacker.noWeapon() && isPlayer(attacker))
+                {
+                    return attacker.Name + " attacked " + defender.Name + " using their fists missed\n";
+                }
+
                 return attacker.Name + " attacked " + defender.Name + " and missed\n";
             }
 
             //if random is >18 double attack
             else if (random >= 18)
             {
+                if (attacker.noWeapon() && isPlayer(attacker))
+                {
+                    damage = 2;
+                    defender.HP -= damage;
+                    if (defender.HP < 0)
+                        defender.HP = 0;
+                    return attacker.Name + " attacked " + defender.Name + " using their fists and did " + damage + " damage.\n";
+                }
+
                 damage *= 2;
                 defender.HP -= damage;
 				if (defender.HP < 0)
 					defender.HP = 0;
+                
                 return attacker.Name + "  critically attacked " + defender.Name + " with the double damage of " + damage + "\n";
             }
             else
             {
+                if (attacker.noWeapon() && isPlayer(attacker))
+                {
+                    damage = 2;
+                    defender.HP -= damage;
+                    if (defender.HP < 0)
+                        defender.HP = 0;
+                    return attacker.Name + " attacked " + defender.Name + " using their fists and did " + damage + " damage.\n";
+                }
+
                 defender.HP -= damage;
                 if (defender.HP < 0)
                     defender.HP = 0;
+
                 return attacker.Name + " attacked " + defender.Name + " and did " + damage + " damage.\n";
             }
         }
@@ -177,6 +201,16 @@ namespace DungeonCrawl.Models
             mon.Dex = temp;
             stats -= temp;
             mon.Str = stats;
+        }
+  
+        public bool isPlayer(Character attacker)
+        {
+            foreach (Character character in players)
+            {
+                if (attacker.Name == character.Name)
+                    return true; 
+            }
+                return false;
         }
 
         public bool AllPlayersDead()
