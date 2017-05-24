@@ -124,8 +124,8 @@ namespace DungeonCrawl.Models
         {
             ID = Guid.NewGuid();
             Name = "";
-            Image = "defaultItem.jpg";
-            Usage = 100;
+            Image = "";
+            Usage = 100000;
             HPValue = 0;
             SpdValue = 0;
             StrValue = 0;

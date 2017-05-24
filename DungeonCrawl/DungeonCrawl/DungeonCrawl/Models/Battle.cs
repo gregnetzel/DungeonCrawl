@@ -45,7 +45,7 @@ namespace DungeonCrawl.Models
         public bool isOver = false;
         public string Fight(Character attacker, Character defender)
         {
-
+            string wh = "";
             int random;
 
             if ((bool)Xamarin.Forms.Application.Current.Properties["OnlyCrit"]) random = 18;
@@ -68,38 +68,62 @@ namespace DungeonCrawl.Models
             //if random is >18 double attack
             else if (random >= 18)
             {
+                if (isPlayer(defender))
+                {
+                    Player temp = (Player)defender;
+                    wh += temp.DamageItems();
+                }
+                if (isPlayer(attacker))
+                {
+                    Player temp = (Player)attacker;
+                    wh += temp.DamageItems();
+                }
                 if (attacker.noWeapon() && isPlayer(attacker))
                 {
                     damage = 2;
                     defender.HP -= damage;
                     if (defender.HP < 0)
                         defender.HP = 0;
-                    return attacker.Name + " attacked " + defender.Name + " using their fists and did " + damage + " damage.\n";
+                    wh += attacker.Name + " attacked " + defender.Name + " using their fists and did " + damage + " damage.\n";
+                    return wh;
                 }
 
                 damage *= 2;
                 defender.HP -= damage;
 				if (defender.HP < 0)
 					defender.HP = 0;
-                
-                return attacker.Name + "  critically attacked " + defender.Name + " with the double damage of " + damage + "\n";
+
+                wh += attacker.Name + "  critically attacked " + defender.Name + " with the double damage of " + damage + "\n";
+                return wh;
             }
             else
             {
+                if (isPlayer(defender))
+                {
+                    Player temp = (Player)defender;
+                    wh += temp.DamageItems();
+                }
+                if (isPlayer(attacker))
+                {
+                    Player temp = (Player)attacker;
+                    wh += temp.DamageItems();
+                }
                 if (attacker.noWeapon() && isPlayer(attacker))
                 {
                     damage = 2;
                     defender.HP -= damage;
                     if (defender.HP < 0)
                         defender.HP = 0;
-                    return attacker.Name + " attacked " + defender.Name + " using their fists and did " + damage + " damage.\n";
+                    wh += attacker.Name + " attacked " + defender.Name + " using their fists and did " + damage + " damage.\n";
+                    return wh;
                 }
 
                 defender.HP -= damage;
                 if (defender.HP < 0)
                     defender.HP = 0;
 
-                return attacker.Name + " attacked " + defender.Name + " and did " + damage + " damage.\n";
+                wh += attacker.Name + " attacked " + defender.Name + " and did " + damage + " damage.\n";
+                return wh;
             }
         }
 

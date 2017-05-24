@@ -83,5 +83,25 @@ namespace DungeonCrawl.Models
                 temp += " and did not equip it.\n";
             return temp;
         }
+
+        public string DamageItems()
+        {
+            string wh = "";
+            List<Item> temp = new List<Item>();//store broken items to be removed
+            foreach (var item in CurrentItems)
+            {
+                item.Usage--;
+                if (item.Usage < 1)
+                {
+                    wh += item.Name + " broke so " + Name + " dropped it.\n";
+                    temp.Add(item);
+                }                    
+            }
+            foreach (var item in temp)
+            {
+                CurrentItems[CurrentItems.IndexOf(item)] = new Item();
+            }
+            return wh;
+        }
     }
 }
