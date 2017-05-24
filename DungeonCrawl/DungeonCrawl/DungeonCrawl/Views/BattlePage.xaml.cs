@@ -70,6 +70,12 @@ namespace DungeonCrawl.Views
                         {
                             p.HP += BattleEffectChosen.Tier;
                             if (p.HP < 0) p.HP = 0;
+                            if (battle.AllPlayersDead())
+                            {
+                                FightRound.Text = "Score Screen";
+                                FightRound.Clicked -= OnFightClick;
+                                FightRound.Clicked += OnScoreClick;
+                            }
                         }
                         BattleEffectLabel.Text = "All players have their " + BattleEffectChosen.AttribMod + "affected by " + BattleEffectChosen.Tier; 
                     }
@@ -88,6 +94,12 @@ namespace DungeonCrawl.Views
                     {
                         p.HP += BattleEffectChosen.Tier;
                         if (p.HP < 0) p.HP = 0;
+                        if (battle.AllPlayersDead())
+                        {
+                            FightRound.Text = "Score Screen";
+                            FightRound.Clicked -= OnFightClick;
+                            FightRound.Clicked += OnScoreClick;
+                        }
                     }
                     BattleEffectLabel.Text = p.Name + " have it's " + BattleEffectChosen.AttribMod + " affected by " + BattleEffectChosen.Tier;
                 }
@@ -140,6 +152,12 @@ namespace DungeonCrawl.Views
                         {
                             p.HP += BattleEffectChosen.Tier;
                             if (p.HP < 0) p.HP = 0;
+                            if (battle.AllPlayersDead())
+                            {
+                                FightRound.Text = "Score Screen";
+                                FightRound.Clicked -= OnFightClick;
+                                FightRound.Clicked += OnScoreClick;
+                            }
                         }
                     }
                     foreach (Monster m in battle.monsters)
