@@ -26,9 +26,8 @@ namespace DungeonCrawl
 			BattleEventsAllowed = false;
 			ItemUsage = false;
 
-            //SetMainPage();
-
-            MainPage = new NavigationPage(new StartUpPage());
+            SetMainPage();
+            
 		}
 
 		public static void SetMainPage()
