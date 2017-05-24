@@ -85,18 +85,18 @@ namespace DungeonCrawl.Models
                 OnPropertyChanged(nameof(Image));
             }
         }
-
-        private string _description;
-        public string Description
+        
+        private string _creator;
+        public string Creator
         {
             get
             {
-                return _description;
+                return _creator;
             }
             set
             {
-                _description = value;
-                OnPropertyChanged(nameof(Description));
+                _creator = value;
+                OnPropertyChanged(nameof(Creator));
             }
         }
 
@@ -124,7 +124,6 @@ namespace DungeonCrawl.Models
         {
             ID = Guid.NewGuid();
             Name = "";
-            Description = "";
             Image = "defaultItem.jpg";
             Usage = 100;
             HPValue = 0;

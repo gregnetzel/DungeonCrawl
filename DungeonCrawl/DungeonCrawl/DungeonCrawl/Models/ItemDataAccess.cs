@@ -26,6 +26,7 @@ namespace DungeonCrawl.Models
             this.Items = new ObservableCollection<Item>(database.Table<Item>());
             if (!database.Table<Item>().Any())// If empty stick in defaults
             {
+                DeleteAllItems();
                 AddDefaultItems();
             }
             rng = new Random();

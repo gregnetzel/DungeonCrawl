@@ -11,16 +11,19 @@
             <Label Text="Super Results" />
             <Switch x:Name="SuperResultsSwitch" IsEnabled="False" Toggled="OnSuperResults"/>
             <Label Text="Debug Settings" />
-            <Label Text="Critical Hits" />
-            <Switch x:Name="CriticalSwitch" Toggled="OnCriticalSwitch"/>
-            <Label Text="Items Allowed?" />
-            <Switch x:Name="ItemsUsageSwitch" Toggled="OnItemUsage"/>
+            <Switch x:Name="DebugSwitch" Toggled="OnDebugSwitch"/>
+            <Label Text="All Critical Hits" />
+            <Switch x:Name="CriticalSwitch" Toggled="OnCriticalSwitch" IsEnabled = "false"/>
+            <Label Text="All Critical Miss" />
+            <Switch x:Name="MissSwitch" Toggled="OnMissSwitch" IsEnabled = "false"/>
+            <Label Text="Items Usage Disabled?" />
+            <Switch x:Name="ItemsUsageSwitch" Toggled="OnItemUsage" IsEnabled = "false" />
             <Label Text="Magic Allowed?" />
-            <Switch x:Name="MagicUsageSwitch" Toggled="OnMagicUsage"/>
+            <Switch x:Name="MagicUsageSwitch" Toggled="OnMagicUsage" IsEnabled = "false"/>
             <Label Text="Healing Allowed?" />
-            <Switch x:Name="HealingUsageSwitch" Toggled="OnHealingUsage" />
+            <Switch x:Name="HealingUsageSwitch" Toggled="OnHealingUsage" IsEnabled = "false" />
             <Label Text="Battle Events" />
-            <Switch x:Name="BattleEventsSwitch" Toggled="OnBattleEvents"/>
+            <Switch x:Name="BattleEventsSwitch" Toggled="OnBattleEvents" IsEnabled = "false"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

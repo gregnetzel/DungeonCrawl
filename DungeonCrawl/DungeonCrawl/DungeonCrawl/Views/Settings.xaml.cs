@@ -41,6 +41,28 @@ namespace DungeonCrawl.Views
             }
         }
 
+        private void OnDebugSwitch(object sender, EventArgs e)
+        {
+            if (!DebugSwitch.IsToggled)
+            {
+                CriticalSwitch.IsEnabled = false;
+                MissSwitch.IsEnabled = false;
+                ItemsUsageSwitch.IsEnabled = false;
+                MagicUsageSwitch.IsEnabled = false;
+                HealingUsageSwitch.IsEnabled = false;
+                BattleEventsSwitch.IsEnabled = false;
+            }
+            else
+            {
+                CriticalSwitch.IsEnabled = true;
+                MissSwitch.IsEnabled = true;
+                ItemsUsageSwitch.IsEnabled = true;
+                MagicUsageSwitch.IsEnabled = true;
+                HealingUsageSwitch.IsEnabled = true;
+                BattleEventsSwitch.IsEnabled = true;
+            }
+        }
+
         private void OnRandomResults(object sender, EventArgs e)
         {
             if (RandomResultsSwitch.IsToggled)
@@ -65,6 +87,14 @@ namespace DungeonCrawl.Views
                 Application.Current.Properties["OnlyCrit"]= true;
             else
                 Application.Current.Properties["OnlyCrit"] = false;
+        }
+
+        private void OnMissSwitch(object sender, EventArgs e)
+        {
+            if (MissSwitch.IsToggled)
+                Application.Current.Properties["OnlyMiss"] = true;
+            else
+                Application.Current.Properties["OnlyMiss"] = false;
         }
 
         private void OnItemUsage(object sender, EventArgs e)
