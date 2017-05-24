@@ -78,7 +78,7 @@ namespace DungeonCrawl.Models
             return obj;
         }
 
-        private void AddDefaultItems()
+        public void AddDefaultItems()
         {
             Item temp, temp1, temp2, temp3;
             for (int i = 1; i < 11; i++)
@@ -86,44 +86,48 @@ namespace DungeonCrawl.Models
 
                 temp = new Item
                 {
-                    Name = "Armor "+i,
-                    HPValue = i,
+                    Name = "Armor " + i,
+                    HPValue = 0,
                     StrValue = 0,
-                    DefValue = 0,
+                    DefValue = i,
                     SpdValue = 0,
+                    Usage = i * 5,
                 };
                 this.Items.Add(temp);
                 database.Insert(temp);
 
                 temp1 = new Item
                 {
-                    Name = "Sword "+i,
+                    Name = "Sword " + i,
                     HPValue = 0,
                     StrValue = i,
                     DefValue = 0,
                     SpdValue = 0,
+                    Usage = i * 5,
                 };
                 this.Items.Add(temp1);
                 database.Insert(temp1);
 
                 temp2 = new Item
                 {
-                    Name = "Hat "+i,
-                    HPValue = 0,
+                    Name = "Food " + i,
+                    HPValue = i,
                     StrValue = 0,
-                    DefValue = i,
+                    DefValue = 0,
                     SpdValue = 0,
+                    Usage = i * 5,
                 };
                 this.Items.Add(temp2);
                 database.Insert(temp2);
 
                 temp3 = new Item
                 {
-                    Name = "Boots "+i,
+                    Name = "Boots " + i,
                     HPValue = 0,
                     StrValue = 0,
                     DefValue = 0,
                     SpdValue = i,
+                    Usage = i * 5,
                 };
                 this.Items.Add(temp3);
                 database.Insert(temp3);
@@ -172,7 +176,11 @@ namespace DungeonCrawl.Models
                 Name = itemInstance.Name,
                 StrValue = str,
                 SpdValue = spd,
-                DefValue = def
+                DefValue = def,
+                HPValue = hp,
+                Creator = itemInstance.Creator,
+                Usage = itemInstance.Usage,
+                Image = itemInstance.Image
             };
             Items.Add(item);
             database.Insert(item);                    

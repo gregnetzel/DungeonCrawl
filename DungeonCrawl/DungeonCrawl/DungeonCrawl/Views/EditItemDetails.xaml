@@ -3,29 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DungeonCrawl.Views.EditItemDetails">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation ="Horizontal">
-                <Label Text="Name: "/>
-                <Entry x:Name="NameXAML" FontSize="18" Text="{Binding Name}"  HorizontalOptions="FillAndExpand"/>
+        <ScrollView>
+            <StackLayout>
+                <Image x:Name ="ItemImage"  HorizontalOptions="Center"/>
+                <StackLayout Orientation ="Horizontal">
+                    <Label Text="Name: "/>
+                    <Entry x:Name="NameXAML" FontSize="18" Text="{Binding Name}"  HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation ="Horizontal">
+                    <Label Text="Health: "/>
+                    <Entry x:Name="HPXAML" FontSize="18" Text="{Binding HPValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                </StackLayout>
+                <StackLayout Orientation ="Horizontal">
+                    <Label Text="Strength: "/>
+                    <Entry x:Name="StrXAML" FontSize="18" Text="{Binding StrValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                </StackLayout>
+                <StackLayout Orientation ="Horizontal">
+                    <Label Text="Defense: "/>
+                    <Entry x:Name="DextXAML" FontSize="18" Text="{Binding DefValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                </StackLayout>
+                <StackLayout Orientation ="Horizontal">
+                    <Label Text="Speed"/>
+                    <Entry x:Name="SpeedXAML" FontSize="18" Text="{Binding SpdValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                </StackLayout>
+                <StackLayout Orientation ="Horizontal">
+                    <Label Text="Usage"/>
+                    <Entry x:Name="UsageField" FontSize="18" Text="{Binding Usage}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                </StackLayout>
+                <StackLayout Orientation ="Horizontal">
+                    <Label Text="Creator"/>
+                    <Entry x:Name="CreatorField" FontSize="18" Text="{Binding Creator}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                </StackLayout>
+                <Button x:Name="SaveItem" Text="Save" IsEnabled="true" Clicked="OnSaveClicked"/>
+                <Button x:Name="DeleteItem" Text="Delete" IsEnabled="true" Clicked="OnDeleteClicked"/>
             </StackLayout>
-            <StackLayout Orientation ="Horizontal">
-                <Label Text="Health: "/>
-                <Entry x:Name="HPXAML" FontSize="18" Text="{Binding HPValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
-            </StackLayout>
-            <StackLayout Orientation ="Horizontal">
-                <Label Text="Strength: "/>
-                <Entry x:Name="StrXAML" FontSize="18" Text="{Binding StrValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
-            </StackLayout>
-            <StackLayout Orientation ="Horizontal">
-                <Label Text="Defense: "/>
-                <Entry x:Name="DextXAML" FontSize="18" Text="{Binding DefValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
-            </StackLayout>
-            <StackLayout Orientation ="Horizontal">
-                <Label Text="Speed"/>
-                <Entry x:Name="SpeedXAML" FontSize="18" Text="{Binding SpdValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
-            </StackLayout>            
-            <Button x:Name="SaveItem" Text="Save" IsEnabled="true" Clicked="OnSaveClicked"/>
-            <Button x:Name="DeleteItem" Text="Delete" IsEnabled="true" Clicked="OnDeleteClicked"/>
-        </StackLayout>
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

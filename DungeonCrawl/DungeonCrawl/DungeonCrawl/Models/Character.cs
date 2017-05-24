@@ -10,18 +10,30 @@ namespace DungeonCrawl.Models
         public int maxStat;
         public string Name { get; set; }
         public string Icon { get; set; }
-        public ObservableCollection<Item> CurrentItems; // item order HP, Strength, Dexterity, Speed
+        public ObservableCollection<Item> CurrentItems; // item order Strength, Dexterity, Speed //hp is now a consumable
+        private int _maxhp;
+        public int MaxHP
+        {
+            get { return _maxhp; }
+            set
+            {
+                if (value >= maxStat)
+                    _maxhp = maxStat;
+                else
+                    _maxhp = value;
+            }
+        }
         private int _hp;
         public int HP  {
-            get { return _hp + CurrentItems[0].HPValue; }
+            get { return _hp; }
             set {
                 if (value >= maxStat)
                     _hp = maxStat;
                 else
-                    _hp = value - CurrentItems[0].HPValue; } }
+                    _hp = value; } }
         private int _strength;
         public int Str {
-            get { return _strength + CurrentItems[1].StrValue; }
+            get { return _strength + CurrentItems[0].StrValue; }
             set {
                 if (value >= maxStat)
                     _strength = maxStat;
@@ -29,7 +41,7 @@ namespace DungeonCrawl.Models
                     _strength = value; } }
         private int _dexterity;
         public int Dex {
-            get { return _dexterity + CurrentItems[2].DefValue; }
+            get { return _dexterity + CurrentItems[1].DefValue; }
             set {
                 if (value >= maxStat)
                     _dexterity = maxStat;
@@ -38,7 +50,7 @@ namespace DungeonCrawl.Models
         public int Defense { get { return Dex; } } //cover for dex since apparently we are using def instead
         private int _speed;
         public int Spd {
-            get { return _speed + CurrentItems[3].SpdValue; }
+            get { return _speed + CurrentItems[2].SpdValue; }
             set {if (value >= maxStat)
                     _speed = maxStat;
                 else

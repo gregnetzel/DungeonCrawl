@@ -11,10 +11,10 @@ using Xamarin.Forms.Xaml;
 namespace DungeonCrawl.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SettingsPage : ContentPage
+	public partial class Settings : ContentPage
 	{
         ItemDataAccess data;
-		public SettingsPage ()
+		public Settings ()
 		{
 			InitializeComponent ();
 		}
@@ -38,6 +38,7 @@ namespace DungeonCrawl.Views
                 SuperResultsSwitch.IsEnabled = false;
                 Application.Current.Properties["ServerItems"] = false;
                 data.DeleteAllItems();
+                data.AddDefaultItems();
             }
         }
 
