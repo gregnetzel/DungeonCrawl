@@ -110,6 +110,7 @@
     <Content Include="sinon.png" />
     <Content Include="sinongun.png" />
     <Content Include="sword.png" />
+    <Content Include="teamPhoto.jpg" />
     <Content Include="yuuki.png" />
     <Content Include="yuukisword.png" />
     <None Include="project.json" />

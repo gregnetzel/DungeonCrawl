@@ -87,9 +87,9 @@ namespace DungeonCrawl.Models
                 temp = new Item
                 {
                     Name = "Armor " + i,
-                    HPValue = i,
+                    HPValue = 0,
                     StrValue = 0,
-                    DefValue = 0,
+                    DefValue = i,
                     SpdValue = 0,
                     Usage = i * 5,
                 };
@@ -110,10 +110,10 @@ namespace DungeonCrawl.Models
 
                 temp2 = new Item
                 {
-                    Name = "Hat " + i,
-                    HPValue = 0,
+                    Name = "Food " + i,
+                    HPValue = i,
                     StrValue = 0,
-                    DefValue = i,
+                    DefValue = 0,
                     SpdValue = 0,
                     Usage = i * 5,
                 };

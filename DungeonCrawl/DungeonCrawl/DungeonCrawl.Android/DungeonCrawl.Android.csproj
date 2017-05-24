@@ -202,6 +202,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\leafa.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\teamPhoto.jpg" />
+  </ItemGroup>
   <Import Project="..\DungeonCrawl\DungeonCrawl.projitems" Label="Shared" Condition="Exists('..\DungeonCrawl\DungeonCrawl.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

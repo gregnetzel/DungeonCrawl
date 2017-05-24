@@ -18,12 +18,13 @@ namespace DungeonCrawl.Models
             maxStat = 99999;
             CurrentItems = new ObservableCollection<Item>();
             Level = 1;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 CurrentItems.Add(new Item());
             }
             int stats = 10;
             HP = stats;
+            MaxHP = HP;
             int temp = rng.Next(0, stats);
             Spd = temp;
             stats -= temp;
@@ -49,6 +50,7 @@ namespace DungeonCrawl.Models
         {
             Random rng = new Random();
             HP += 2*Level;
+            MaxHP += 2 * Level;
             Str += rng.Next(1, 2 * Level);
             Spd += rng.Next(1, 2 * Level);
             Dex += rng.Next(1, 2 * Level);
@@ -59,24 +61,33 @@ namespace DungeonCrawl.Models
         public string GetItem(Item item)
         {
             string temp = "Player " + Name + " found and item: " + item.Name;
-            if (item.HPValue > this.CurrentItems[0].HPValue)
+            if (item.HPValue > 0)
+            {
+                int missinghp = MaxHP - HP;
+                if (missinghp > item.HPValue)
+                {
+                    HP += item.HPValue;
+                    temp += " and ate/drank it for" + item.HPValue + " points.\n";
+                }
+                else
+                {
+                    HP = MaxHP;
+                    temp += " and ate/drank it for " + missinghp + " points.\n";
+                }
+            }
+            else if(item.StrValue > this.CurrentItems[0].StrValue)
             {
                 CurrentItems[0] = item;
                 temp += " and equipped it.\n";
             }
-            else if(item.StrValue > this.CurrentItems[1].StrValue)
+            else if (item.DefValue > this.CurrentItems[1].DefValue)
             {
                 CurrentItems[1] = item;
                 temp += " and equipped it.\n";
             }
-            else if (item.DefValue > this.CurrentItems[2].DefValue)
+            else if (item.SpdValue > this.CurrentItems[2].SpdValue)
             {
                 CurrentItems[2] = item;
-                temp += " and equipped it.\n";
-            }
-            else if (item.SpdValue > this.CurrentItems[3].SpdValue)
-            {
-                CurrentItems[3] = item;
                 temp += " and equipped it.\n";
             }
             else
