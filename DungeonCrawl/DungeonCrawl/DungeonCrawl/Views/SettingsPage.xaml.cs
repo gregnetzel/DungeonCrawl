@@ -11,10 +11,10 @@ using Xamarin.Forms.Xaml;
 namespace DungeonCrawl.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Settings : ContentPage
+	public partial class SettingsPage : ContentPage
 	{
         ItemDataAccess data;
-		public Settings ()
+		public SettingsPage ()
 		{
 			InitializeComponent ();
 		}
