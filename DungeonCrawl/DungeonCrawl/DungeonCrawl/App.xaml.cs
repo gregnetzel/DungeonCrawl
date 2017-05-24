@@ -8,9 +8,23 @@ namespace DungeonCrawl
 {
 	public partial class App : Application
 	{
+        
+		public bool OnlyCrit { get; set; }
+		public bool HealingAllowed { get; set; }
+		public bool MagicAllowed { get; set; }
+		public bool BattleEventsAllowed { get; set; }
+		public bool ItemUsage { get; set; }
+
         public App()
 		{
 			InitializeComponent();
+
+
+			OnlyCrit = false;
+			HealingAllowed = false;
+			MagicAllowed = false;
+			BattleEventsAllowed = false;
+			ItemUsage = false;
 
 			SetMainPage();
 		}

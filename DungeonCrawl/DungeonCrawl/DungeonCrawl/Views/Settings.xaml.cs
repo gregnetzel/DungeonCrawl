@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 
 namespace DungeonCrawl.Views
 {
-	//[XamlCompilation(XamlCompilationOptions.Compile)]
+	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Settings : ContentPage
 	{
 		public Settings ()
@@ -67,7 +67,7 @@ namespace DungeonCrawl.Views
         private void OnBattleEvents(object sender, EventArgs e)
         {
             if (BattleEventsSwitch.IsToggled) Application.Current.Properties["BattleEventsAllowed"] = true;
-            else (BattleEventsSwitch.IsToggled)Application.Current.Properties["BattleEventsAllowed"] = false;
+            else Application.Current.Properties["BattleEventsAllowed"] = false;
         }
     }
 }
