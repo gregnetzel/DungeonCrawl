@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DungeonCrawl.Models
 {
-    class BattleEffects
+    public class BattleEffects
     {
         public string Name { get; set; }
         public string Description { get; set; }

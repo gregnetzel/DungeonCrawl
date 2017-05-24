@@ -1,5 +1,5 @@
 ﻿using DungeonCrawl.Views;
-
+using DungeonCrawl.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,6 +14,8 @@ namespace DungeonCrawl
 		public bool BattleEventsAllowed { get; set; }
 		public bool ItemUsage { get; set; }
 
+        public static BattleEffectDataAccess BattleEffectManager;
+
         public App()
 		{
 			InitializeComponent();
@@ -24,8 +26,10 @@ namespace DungeonCrawl
 			OnlyCrit = false;
 			HealingAllowed = false;
 			MagicAllowed = false;
-			BattleEventsAllowed = false;
+			Application.Current.Properties["BattleEventsAllowed"] = false;
 			ItemUsage = false;
+
+            BattleEffectManager = new BattleEffectDataAccess();
 
             SetMainPage();
             

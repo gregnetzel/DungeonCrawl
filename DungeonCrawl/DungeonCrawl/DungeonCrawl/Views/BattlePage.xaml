@@ -27,6 +27,10 @@
             </StackLayout>
             <Button x:Name="FightRound" Text="Fight Round" IsEnabled="true" Clicked="OnFightClick" Grid.Row="1"/>
             <ScrollView HorizontalOptions="CenterAndExpand" Grid.Row="2">
+                <Label x:Name="BattleEffectNameLabel" FontSize="20" />
+                <Label x:Name="BattleEffectLabel" FontSize="18"/>
+            </ScrollView>
+            <ScrollView HorizontalOptions="CenterAndExpand" Grid.Row="3">
                 <Label x:Name="GameOut" FontSize="18" />
             </ScrollView>
         </Grid>

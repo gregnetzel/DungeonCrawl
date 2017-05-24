@@ -17,6 +17,7 @@ namespace DungeonCrawl.Views
         public Battle battle;
         private bool OnAuto = false;
         private int battleCt;
+        Random rng;
         public BattlePage ()//start of auto game
 		{
 			InitializeComponent ();
@@ -42,6 +43,125 @@ namespace DungeonCrawl.Views
             InitializeComponent();
             battle = bat;
             OnAuto = auto;
+            rng = new Random();
+
+            // --------------------------------------------------- BATTLE EFFECT STARTS HERE ------------------------------------------------------------------------------
+            if ((bool)Application.Current.Properties["BattleEventsAllowed"])
+            {
+                int totalBattleEffect = App.BattleEffectManager.BattleEffectsList.Count;
+
+                int PickABattleEffect = rng.Next(0, totalBattleEffect);
+
+                BattleEffects BattleEffectChosen = App.BattleEffectManager.BattleEffectsList[PickABattleEffect];
+
+                BattleEffectNameLabel.Text = BattleEffectChosen.Name;
+
+                if (BattleEffectChosen.Target == "CHARACTERALL")
+                {
+                    foreach (Player p in players)
+                    {
+                        if (BattleEffectChosen.AttribMod == "STRENGTH")
+                            p.Str += BattleEffectChosen.Tier;
+                        else if (BattleEffectChosen.AttribMod == "SPEED")
+                            p.Spd += BattleEffectChosen.Tier;
+                        else if (BattleEffectChosen.AttribMod == "DEFENSE")
+                            p.Dex += BattleEffectChosen.Tier;
+                        else
+                        {
+                            p.HP += BattleEffectChosen.Tier;
+                            if (p.HP < 0) p.HP = 0;
+                        }
+                        BattleEffectLabel.Text = "All players have their " + BattleEffectChosen.AttribMod + "affected by " + BattleEffectChosen.Tier; 
+                    }
+                }
+                else if (BattleEffectChosen.Target == "CHARACTERSINGLE")
+                {
+                    int PickRandomChar = rng.Next(0, 4);
+                    Player p = players[PickRandomChar];
+                    if (BattleEffectChosen.AttribMod == "STRENGTH")
+                        p.Str += BattleEffectChosen.Tier;
+                    else if (BattleEffectChosen.AttribMod == "SPEED")
+                        p.Spd += BattleEffectChosen.Tier;
+                    else if (BattleEffectChosen.AttribMod == "DEFENSE")
+                        p.Dex += BattleEffectChosen.Tier;
+                    else
+                    {
+                        p.HP += BattleEffectChosen.Tier;
+                        if (p.HP < 0) p.HP = 0;
+                    }
+                    BattleEffectLabel.Text = p.Name + " have it's " + BattleEffectChosen.AttribMod + " affected by " + BattleEffectChosen.Tier;
+                }
+                else if (BattleEffectChosen.Target == "MONSTERAALL")
+                {
+                    foreach (Monster m in battle.monsters)
+                    {
+                        if (BattleEffectChosen.AttribMod == "STRENGTH")
+                            m.Str += BattleEffectChosen.Tier;
+                        else if (BattleEffectChosen.AttribMod == "SPEED")
+                            m.Spd += BattleEffectChosen.Tier;
+                        else if (BattleEffectChosen.AttribMod == "DEFENSE")
+                            m.Dex += BattleEffectChosen.Tier;
+                        else
+                        {
+                            m.HP += BattleEffectChosen.Tier;
+                            if (m.HP < 0) m.HP = 0;
+                        }
+                        BattleEffectLabel.Text = "All monsters have their " + BattleEffectChosen.AttribMod + " affected by " + BattleEffectChosen.Tier;
+                    }
+                }
+                else if (BattleEffectChosen.Target == "MONSTERSINGLE")
+                {
+                    int PickRandomMonster = rng.Next(0, 4);
+                    Monster m = battle.monsters[PickRandomMonster];
+                    if (BattleEffectChosen.AttribMod == "STRENGTH")
+                        m.Str += BattleEffectChosen.Tier;
+                    else if (BattleEffectChosen.AttribMod == "SPEED")
+                        m.Spd += BattleEffectChosen.Tier;
+                    else if (BattleEffectChosen.AttribMod == "DEFENSE")
+                        m.Dex += BattleEffectChosen.Tier;
+                    else
+                    {
+                        m.HP += BattleEffectChosen.Tier;
+                        if (m.HP < 0) m.HP = 0;
+                    }
+                    BattleEffectLabel.Text = m.Name + " have it's " + BattleEffectChosen.AttribMod + " affected by " + BattleEffectChosen.Tier;
+                }
+                else if (BattleEffectChosen.Target == "ALL")
+                {
+                    foreach (Player p in players)
+                    {
+                        if (BattleEffectChosen.AttribMod == "STRENGTH")
+                            p.Str += BattleEffectChosen.Tier;
+                        else if (BattleEffectChosen.AttribMod == "SPEED")
+                            p.Spd += BattleEffectChosen.Tier;
+                        else if (BattleEffectChosen.AttribMod == "DEFENSE")
+                            p.Dex += BattleEffectChosen.Tier;
+                        else
+                        {
+                            p.HP += BattleEffectChosen.Tier;
+                            if (p.HP < 0) p.HP = 0;
+                        }
+                    }
+                    foreach (Monster m in battle.monsters)
+                    {
+                        if (BattleEffectChosen.AttribMod == "STRENGTH")
+                            m.Str += BattleEffectChosen.Tier;
+                        else if (BattleEffectChosen.AttribMod == "SPEED")
+                            m.Spd += BattleEffectChosen.Tier;
+                        else if (BattleEffectChosen.AttribMod == "DEFENSE")
+                            m.Dex += BattleEffectChosen.Tier;
+                        else
+                        {
+                            m.HP += BattleEffectChosen.Tier;
+                            if (m.HP < 0) m.HP = 0;
+                        }
+                    }
+                    BattleEffectLabel.Text = "Everyone have their " + BattleEffectChosen.AttribMod + " affected by " + BattleEffectChosen.Tier;
+                }
+            }
+
+            // --------------------------------------------------- BATTLE EFFECT ENDS HERE ------------------------------------------------------------------------------
+
             if (auto == true)//auto logic
             {
                 GameOut.Text = AutoBattle();
