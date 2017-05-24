@@ -69,7 +69,7 @@ namespace DungeonCrawl.Models
                 CurrentItems[1] = item;
                 temp += " and equipped it.\n";
             }
-            else if (item.DexValue > this.CurrentItems[2].DexValue)
+            else if (item.DefValue > this.CurrentItems[2].DefValue)
             {
                 CurrentItems[2] = item;
                 temp += " and equipped it.\n";

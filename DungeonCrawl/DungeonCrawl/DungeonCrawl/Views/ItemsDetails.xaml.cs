@@ -23,7 +23,7 @@ namespace DungeonCrawl.Views
 
             Title = item.Name;            
 
-            DetailsXAML.Text = $" Str: {item.StrValue}\n Dex: {item.DexValue}\n Spd: {item.SpdValue}\n HP: {item.HPValue}";
+            DetailsXAML.Text = $" Str: {item.StrValue}\n Def: {item.DefValue}\n Spd: {item.SpdValue}\n HP: {item.HPValue}";
 
         }
     }

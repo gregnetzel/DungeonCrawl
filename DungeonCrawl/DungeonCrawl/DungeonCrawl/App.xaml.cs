@@ -8,8 +8,7 @@ namespace DungeonCrawl
 {
 	public partial class App : Application
 	{
-        
-		public bool OnlyCrit { get; set; }
+        public bool OnlyCrit { get; set; }
 		public bool HealingAllowed { get; set; }
 		public bool MagicAllowed { get; set; }
 		public bool BattleEventsAllowed { get; set; }
@@ -19,7 +18,9 @@ namespace DungeonCrawl
 		{
 			InitializeComponent();
 
-
+            Application.Current.Properties["ServerItems"] = false;
+            Application.Current.Properties["RandomizeItems"] = false;
+            Application.Current.Properties["SuperItems"] = false;
 			OnlyCrit = false;
 			HealingAllowed = false;
 			MagicAllowed = false;

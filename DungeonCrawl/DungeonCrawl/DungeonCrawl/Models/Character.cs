@@ -29,7 +29,7 @@ namespace DungeonCrawl.Models
                     _strength = value; } }
         private int _dexterity;
         public int Dex {
-            get { return _dexterity + CurrentItems[2].DexValue; }
+            get { return _dexterity + CurrentItems[2].DefValue; }
             set {
                 if (value >= maxStat)
                     _dexterity = maxStat;

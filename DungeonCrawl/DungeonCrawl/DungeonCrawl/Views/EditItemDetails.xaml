@@ -17,8 +17,8 @@
                 <Entry x:Name="StrXAML" FontSize="18" Text="{Binding StrValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
             </StackLayout>
             <StackLayout Orientation ="Horizontal">
-                <Label Text="Dexterity: "/>
-                <Entry x:Name="DextXAML" FontSize="18" Text="{Binding DexValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                <Label Text="Defense: "/>
+                <Entry x:Name="DextXAML" FontSize="18" Text="{Binding DefValue}"  HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
             </StackLayout>
             <StackLayout Orientation ="Horizontal">
                 <Label Text="Speed"/>

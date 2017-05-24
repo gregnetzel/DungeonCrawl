@@ -31,7 +31,7 @@ namespace DungeonCrawl.Models
             rng = new Random();
             
         }
-        public class JObj
+        public class JObj // temp obj to hold return from post
         {
             [JsonProperty(PropertyName = "error_code")]
             public string error_code;
@@ -41,7 +41,7 @@ namespace DungeonCrawl.Models
             public APItem[] data;
         }
 
-        public struct PostData
+        public struct PostData //temp struct to format post
         {            
             [JsonProperty(PropertyName = "randomItemOption")]
             public int random;
@@ -88,7 +88,7 @@ namespace DungeonCrawl.Models
                     Name = "Armor "+i,
                     HPValue = i,
                     StrValue = 0,
-                    DexValue = 0,
+                    DefValue = 0,
                     SpdValue = 0,
                 };
                 this.Items.Add(temp);
@@ -99,7 +99,7 @@ namespace DungeonCrawl.Models
                     Name = "Sword "+i,
                     HPValue = 0,
                     StrValue = i,
-                    DexValue = 0,
+                    DefValue = 0,
                     SpdValue = 0,
                 };
                 this.Items.Add(temp1);
@@ -110,7 +110,7 @@ namespace DungeonCrawl.Models
                     Name = "Hat "+i,
                     HPValue = 0,
                     StrValue = 0,
-                    DexValue = i,
+                    DefValue = i,
                     SpdValue = 0,
                 };
                 this.Items.Add(temp2);
@@ -121,7 +121,7 @@ namespace DungeonCrawl.Models
                     Name = "Boots "+i,
                     HPValue = 0,
                     StrValue = 0,
-                    DexValue = 0,
+                    DefValue = 0,
                     SpdValue = i,
                 };
                 this.Items.Add(temp3);
@@ -136,7 +136,7 @@ namespace DungeonCrawl.Models
                 Name = "",
                 HPValue = 0,
                 StrValue = 0,
-                DexValue = 0,
+                DefValue = 0,
                 SpdValue = 0,
             };
             Items.Add(temp);
@@ -155,23 +155,23 @@ namespace DungeonCrawl.Models
         public void SaveItem(APItem itemInstance)
         {
             int spd = 0;
-            int dex = 0;
+            int hp = 0;
             int str = 0;
             int def = 0;
-            if (itemInstance.AttribMod == "Spd")
+            if (itemInstance.AttribMod == "SPEED")
                 spd = itemInstance.Tier;
-            if (itemInstance.AttribMod == "Str")
+            if (itemInstance.AttribMod == "STRENGTH")
                 str = itemInstance.Tier;
-            if (itemInstance.AttribMod == "Dex")
-                dex = itemInstance.Tier;
-            if (itemInstance.AttribMod == "Def")
+            if (itemInstance.AttribMod == "HP")
+                hp = itemInstance.Tier;
+            if (itemInstance.AttribMod == "DEFENSE")
                 def = itemInstance.Tier;
             Item item = new Item
             {
                 Name = itemInstance.Name,
                 StrValue = str,
                 SpdValue = spd,
-                DexValue = def
+                DefValue = def
             };
             Items.Add(item);
             database.Insert(item);                    
