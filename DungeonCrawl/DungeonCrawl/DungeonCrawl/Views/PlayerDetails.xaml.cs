@@ -24,7 +24,7 @@ namespace DungeonCrawl.Views
             Title = player.Name;
             ItemListView.ItemsSource = player.CurrentItems;
 
-            CharDetails.Text = $" Level: {player.Level}\n Rounds Survived: {player.numRounds}\n HP: {player.HP}\n Str: {player.Str}\n Dex: {player.Dex}\n Spd: {player.Spd}";
+            CharDetails.Text = $" Level: {player.Level}\n Rounds Survived: {player.numRounds}\n HP: {player.HP}\n Str: {player.Str}\n Def: {player.Defense}\n Spd: {player.Spd}";
         }
         async void OnItemClick(object sender, SelectedItemChangedEventArgs e)
         {

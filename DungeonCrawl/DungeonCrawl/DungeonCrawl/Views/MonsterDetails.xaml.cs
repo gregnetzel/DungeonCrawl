@@ -22,7 +22,7 @@ namespace DungeonCrawl.Views
             InitializeComponent();
 
             Title = mon.Name;
-            MonsDetails.Text = $"Health: {mon.HP}\n Strength: {mon.Str}\n Dexterity: {mon.Dex}\n Speed: {mon.Spd}";
+            MonsDetails.Text = $"Health: {mon.HP}\n Strength: {mon.Str}\n Defense: {mon.Dex}\n Speed: {mon.Spd}";
         }
     }
 }

@@ -35,6 +35,7 @@ namespace DungeonCrawl.Models
                     _dexterity = maxStat;
                 else
                     _dexterity = value; } }
+        public int Defense { get { return Dex; } } //cover for dex since apparently we are using def instead
         private int _speed;
         public int Spd {
             get { return _speed + CurrentItems[3].SpdValue; }
@@ -49,9 +50,7 @@ namespace DungeonCrawl.Models
             Character cha = obj as Character;
             return Spd.CompareTo(cha.Spd);
         }
-
-        // Attack and Dodge should be calculated in Battle. Can just get Str, Level, Etc from Character and calculate it there
-        // Attack should take 2 param, the characters that are fighting, calculate how much dmg, hit or miss in this function
+        
 
         public bool IsDead()
         {
