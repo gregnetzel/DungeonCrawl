@@ -62,5 +62,25 @@ namespace DungeonCrawl.Models
         {
             return NameAndHealth;
         }
+
+        public bool noWeapon()
+        {          
+            foreach (Item item in CurrentItems)
+            {
+                if (item.StrValue > 0)
+                    return false; 
+            }
+
+            if (CurrentItems.Count == 0)
+            {
+                Item fists = new Item();
+                fists.Name = "Fists";
+                fists.StrValue = 2;
+
+                CurrentItems.Add(fists); 
+            }
+
+            return true; 
+        }
     }
 }
