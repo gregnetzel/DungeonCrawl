@@ -11,17 +11,11 @@ namespace UnitTestProject1
         public void Monster_TestDropXP()
         {
             var myMonster = new Monster();
-            myMonster.Level = 4;
-
-            Assert.IsTrue(myMonster.DropXP() == 8, "DropXP has errors");
+            myMonster.Dex = 1;
+            myMonster.Str = 1;
+            myMonster.Spd = 1;
+            Assert.IsTrue(myMonster.DropXP() == 6, "DropXP has errors");
         }
-
-        [TestMethod]
-        public void Monster_TestDropItems()
-        {
-            var myMonster = new Monster();
-            Item i = myMonster.DropItem();
-            Assert.IsNotNull(i, "DropItems has error");
-        }
+        
     }
 }

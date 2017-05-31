@@ -38,9 +38,9 @@ namespace UnitTestProject1
             var myPlayer = new Player();
 
             myPlayer.CurrentXP = 0;
-            myPlayer.AddXP(50);
+            myPlayer.AddXP(20);
 
-            Assert.IsTrue(myPlayer.CurrentXP == 50, "AddXP has errors");
+            Assert.IsTrue(myPlayer.CurrentXP == 20, "AddXP has errors");
         }
 
         [TestMethod]
@@ -87,7 +87,7 @@ namespace UnitTestProject1
             myPlayer.GetItem(tempItem);
             myPlayer.GetItem(tempItem2);
 
-            Assert.IsTrue(myPlayer.CurrentItems[1].Name == "Test", "GetItems has errors");
+            Assert.IsTrue(myPlayer.CurrentItems[0].Name == "Test", "GetItems has errors");
         }
     }
 }
