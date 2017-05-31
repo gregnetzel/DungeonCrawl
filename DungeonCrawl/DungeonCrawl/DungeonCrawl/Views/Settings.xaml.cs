@@ -40,6 +40,24 @@ namespace DungeonCrawl.Views
                 data.DeleteAllItems();
                 data.AddDefaultItems();
             }
+        }        
+
+        private void OnRandomResults(object sender, EventArgs e)
+        {
+            if (RandomResultsSwitch.IsToggled)
+                Application.Current.Properties["RandomizeItems"] = true;
+            else
+                Application.Current.Properties["RandomizeItems"] = false;
+            data.GetAPIItems((bool)Application.Current.Properties["RandomizeItems"], (bool)Application.Current.Properties["SuperItems"]);
+        }
+
+        private void OnSuperResults(object sender, EventArgs e)
+        {
+            if (SuperResultsSwitch.IsToggled)
+                Application.Current.Properties["SuperItems"] = true;
+            else
+                Application.Current.Properties["SuperItems"] = false;
+            data.GetAPIItems((bool)Application.Current.Properties["RandomizeItems"], (bool)Application.Current.Properties["SuperItems"]);
         }
 
         private void OnDebugSwitch(object sender, EventArgs e)
@@ -62,24 +80,6 @@ namespace DungeonCrawl.Views
                 HealingUsageSwitch.IsEnabled = true;
                 BattleEventsSwitch.IsEnabled = true;
             }
-        }
-
-        private void OnRandomResults(object sender, EventArgs e)
-        {
-            if (RandomResultsSwitch.IsToggled)
-                Application.Current.Properties["RandomizeItems"] = true;
-            else
-                Application.Current.Properties["RandomizeItems"] = false;
-            data.GetAPIItems((bool)Application.Current.Properties["RandomizeItems"], (bool)Application.Current.Properties["SuperItems"]);
-        }
-
-        private void OnSuperResults(object sender, EventArgs e)
-        {
-            if (SuperResultsSwitch.IsToggled)
-                Application.Current.Properties["SuperItems"] = true;
-            else
-                Application.Current.Properties["SuperItems"] = false;
-            data.GetAPIItems((bool)Application.Current.Properties["RandomizeItems"], (bool)Application.Current.Properties["SuperItems"]);
         }
 
         private void OnCriticalSwitch(object sender, EventArgs e)

@@ -23,9 +23,10 @@ namespace DungeonCrawl
             Application.Current.Properties["ServerItems"] = false;
             Application.Current.Properties["RandomizeItems"] = false;
             Application.Current.Properties["SuperItems"] = false;
-			OnlyCrit = false;
-			HealingAllowed = false;
-			MagicAllowed = false;
+            Application.Current.Properties["OnlyCrit"] = false;
+            Application.Current.Properties["OnlyMiss"] = false;
+            Application.Current.Properties["HealingAllowed"] = false;
+            Application.Current.Properties["MagicAllowed"] = false;
 			Application.Current.Properties["BattleEventsAllowed"] = false;
 			ItemUsage = false;
 

@@ -48,8 +48,12 @@ namespace DungeonCrawl.Models
             string wh = "";
             int random;
 
-            if ((bool)Xamarin.Forms.Application.Current.Properties["OnlyCrit"]) random = 18;
-            else random = rng.Next(1, 20);
+            if ((bool)Xamarin.Forms.Application.Current.Properties["OnlyCrit"])
+                random = 18;
+            else if ((bool)Xamarin.Forms.Application.Current.Properties["OnlyMiss"])
+                random = 1;
+            else
+                random = rng.Next(1, 20);
 
             //int random = rng.Next(1,20);
 			int damage = attacker.Str;
@@ -84,7 +88,7 @@ namespace DungeonCrawl.Models
                     defender.HP -= damage;
                     if (defender.HP < 0)
                         defender.HP = 0;
-                    wh += attacker.Name + " attacked " + defender.Name + " using their fists and did " + damage + " damage.\n";
+                    wh += attacker.Name + " critically attacked " + defender.Name + " using their fists so still only did " + damage + " damage.\n";
                     return wh;
                 }
 

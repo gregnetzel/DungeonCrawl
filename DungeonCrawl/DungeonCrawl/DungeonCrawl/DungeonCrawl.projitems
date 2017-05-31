@@ -21,6 +21,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)IDatabaseConnection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\APItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Battle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BattleEffectDataAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BattleEffects.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Character.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ItemDataAccess.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Monster.cs" />
